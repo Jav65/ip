@@ -51,6 +51,14 @@ public class Stewie {
             System.out.print(hr);
             taskList.listTask();
             System.out.print(hr);
+        } else if (command.startsWith("mark")) {
+            System.out.print(hr);
+            taskList.markTask(Integer.parseInt(command.split("\\s+")[1]));
+            System.out.print(hr);
+        } else if (command.startsWith("unmark")) {
+            System.out.print(hr);
+            taskList.unmarkTask(Integer.parseInt(command.split("\\s+")[1]));
+            System.out.print(hr);
         } else {
             System.out.print(hr);
             taskList.addTask(new Task(command));
