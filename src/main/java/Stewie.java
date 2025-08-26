@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Stewie {
     public static final String logo =
             "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⡶⠦⢤⠴⠒⠒⠚⠛⠒⢶⠤⠤⠤⣤⣤⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
@@ -25,19 +27,32 @@ public class Stewie {
                     "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⢸⠀⠀⣿⣿⣿⣿⣿⠀⠀⠀⠀⢸⡀⠙⠶⠿⠿⠉⢻⠉⠀⠀⠀⠀⠀⠀⠀\n" +
                     "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡏⠛⠉⢹⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠈⠉⠉⠉⠉⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀\n";
 
-    public static final String hr = "______________________________________________________________________________________________\n";
+    public static final String hr = "\t______________________________________________________________________________________________\n";
 
     public static void init() {
         System.out.printf("Ah, a new face. Hullo! I'm Stewie!\n" + logo + hr +
-                " Don't just stand there, minion. State your purpose before I lose what's left of my patience.\n" + hr);
+                "\t Don't just stand there, minion. State your purpose before I lose what's left of my patience.\n" + hr);
     }
 
     public static void bye() {
-        System.out.printf(hr + " Finally, you're leaving. Do try not to get lost on the way out.\n" + hr);
+        System.out.printf(hr + "\t Finally, you're leaving. Do try not to get lost on the way out.\n" + hr);
     }
 
     public static void main(String[] args) {
         init();
+
+        System.out.printf("$ ");
+
+        Scanner scanner = new Scanner(System.in);
+        String command = scanner.nextLine();
+
+        while (!command.equals("bye")) {
+            System.out.printf(hr + "\t " + command + "\n" + hr);
+
+            System.out.printf("$ ");
+            command = scanner.nextLine();
+        }
+
         bye();
     }
 }
