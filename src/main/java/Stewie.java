@@ -1,4 +1,9 @@
 import java.util.Scanner;
+
+import Exceptions.CommandException;
+import Exceptions.InvalidCommandException;
+import Exceptions.OutOfRangeException;
+import Exceptions.UnknownCommandException;
 import Task.ToDoTask;
 import Task.DeadlineTask;
 import Task.EventTask;
@@ -30,7 +35,7 @@ public class Stewie {
                     "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⢸⠀⠀⣿⣿⣿⣿⣿⠀⠀⠀⠀⢸⡀⠙⠶⠿⠿⠉⢻⠉⠀⠀⠀⠀⠀⠀⠀\n" +
                     "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡏⠛⠉⢹⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠈⠉⠉⠉⠉⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀\n";
 
-    public static final String hr = "\t____________________________________________________________\n";
+    public static final String hr = "\t________________________________________________________________________\n";
 
     public static void greetings() {
         System.out.printf("Ah, a new face. Hullo! I'm Stewie!\n" + logo + hr +
@@ -44,30 +49,80 @@ public class Stewie {
 
     private static TaskList taskList = new TaskList();
 
-    public static boolean parse_command(String command) {
-        if (command.equals("bye")) {
+    private static int parseIndexOrThrow(String args, String usage) throws InvalidCommandException {
+        if (args == null || args.isBlank()) {
+            throw new InvalidCommandException(usage);
+        }
+        try {
+            return Integer.parseInt(args.trim());
+        } catch (NumberFormatException e) {
+            throw new InvalidCommandException(usage);
+        }
+    }
+
+    public static boolean parse_command(String input) throws CommandException {
+        if (input == null) return true;
+        input = input.trim();
+        if (input.isBlank()) return true;
+
+        if (input.equals("bye")) {
             return false;
         }
 
+        String[] cmdNArgs = input.split("\\s+", 2);
+        String command = cmdNArgs[0];
+        String args = cmdNArgs.length > 1 ? cmdNArgs[1] : "";
+
         System.out.print(hr);
-        if (command.equals("list")) {
-            taskList.listTask();
-        } else if (command.startsWith("mark")) {
-            taskList.markTask(Integer.parseInt(command.split("\\s+")[1]));
-        } else if (command.startsWith("unmark")) {
-            taskList.unmarkTask(Integer.parseInt(command.split("\\s+")[1]));
-        } else if (command.startsWith("todo")){
-            String[] args = command.split("\\s+",2);
-            String description = args[1];
-            taskList.addTask(new ToDoTask(description));
-        } else if (command.startsWith("deadline")){
-            String[] args = command.split("\\s+/by\\s+");
-            String description = args[0].substring("deadline".length()).trim();
-            taskList.addTask(new DeadlineTask(description, args[1]));
-        } else if (command.startsWith("event")){
-            String[] args = command.split("\\s+/(from|to)\\s+");
-            String description = args[0].substring("event".length()).trim();
-            taskList.addTask(new EventTask(description, args[1], args[2]));
+        switch (command) {
+            case "list": {
+                taskList.listTask();
+                break;
+            }
+            case "mark": {
+                int idx = parseIndexOrThrow(args, "mark <index>\n\t Expected an integer index!");
+                try {
+                    taskList.markTask(idx);
+                } catch (IndexOutOfBoundsException e) {
+                    throw new OutOfRangeException("\t There's no task at index " + idx);
+                }
+                break;
+            }
+            case "unmark": {
+                int idx = parseIndexOrThrow(args, "unmark <index>\n\t Expected an integer index!");
+                try {
+                    taskList.unmarkTask(idx);
+                } catch (IndexOutOfBoundsException e) {
+                    throw new OutOfRangeException("\t There's no task at index " + idx + ".");
+                }
+                break;
+            }
+            case "todo": {
+                if (args.isBlank()) {
+                    throw new InvalidCommandException("todo <description>");
+                }
+                taskList.addTask(new ToDoTask(args.trim()));
+                break;
+            }
+            case "deadline": {
+                String[] parts = args.split("\\s+/by\\s+", 2);
+                if (parts.length < 2 || parts[0].isBlank() || parts[1].isBlank()) {
+                    throw new InvalidCommandException("deadline <description> /by <time>");
+                }
+                taskList.addTask(new DeadlineTask(parts[0].trim(), parts[1].trim()));
+                break;
+            }
+            case "event": {
+                String[] parts = args.split("\\s+/from\\s+|\\s+/to\\s+");
+                if (parts.length < 3 || parts[0].isBlank() || parts[1].isBlank() || parts[2].isBlank()) {
+                    throw new InvalidCommandException("event <description> /from <start> /to <end>");
+                }
+                taskList.addTask(new EventTask(parts[0].trim(), parts[1].trim(), parts[2].trim()));
+                break;
+            }
+            default:
+                throw new UnknownCommandException("\t\tlist, mark <i>, unmark <i>, todo <desc>, deadline <desc> /by <time>," +
+                                                    "\n\t\tevent <desc> /from <start> /to <end>, bye");
         }
         System.out.print(hr);
 
@@ -78,14 +133,17 @@ public class Stewie {
     public static void main(String[] args) {
         greetings();
 
-        System.out.print("$ ");
-
         Scanner scanner = new Scanner(System.in);
-        String command = scanner.nextLine();
 
-        while (parse_command(command)) {
+        while (true) {
             System.out.print("$ ");
-            command = scanner.nextLine();
+            String command = scanner.nextLine();
+            try {
+                if (!parse_command(command)) break;
+            } catch (CommandException e) {
+                System.out.println(e.getMessage());
+                System.out.print(hr);
+            }
         }
 
         bye();
