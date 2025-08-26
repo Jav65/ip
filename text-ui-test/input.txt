@@ -1,0 +1,16 @@
+todo watch CS2103 week 3 breifing
+list
+deadline CS2103 Quiz 3 /by 29/08 16:00
+list
+event CS2103 Tutorial /from 27 Aug 9am /to 10am
+list
+mark 2
+mark 1
+list
+unmark 1
+mark 3
+list
+unmark 3
+unmark 2
+list
+bye
