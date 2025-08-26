@@ -15,7 +15,7 @@ public class TaskList {
     }
 
     public void markTask(int i) {
-        Task task = this.tasks.get(i);
+        Task task = this.tasks.get(i - 1);
         task.markAsDone();
         System.out.println("\t Behold! I've declared this paltry task complete.");
         System.out.println("\t  " + task.getDescriptionWithMark());
@@ -23,7 +23,7 @@ public class TaskList {
     }
 
     public void unmarkTask(int i) {
-        Task task = this.tasks.get(i);
+        Task task = this.tasks.get(i - 1);
         task.unmark();
         System.out.println("\t You're toying with me! I've marked this back as incomplete.");
         System.out.println("\t  " + task.getDescriptionWithMark());
