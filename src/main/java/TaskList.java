@@ -46,4 +46,12 @@ public class TaskList {
         }
         System.out.println("\t Failure is not an option.");
     }
+
+    public void deleteTask(int i) {
+        Task task = this.tasks.remove(i - 1);
+        System.out.println("\t Poof! Begone with you, you insignificant little undertaking!");
+        System.out.println("\t  " + task.getDescription());
+        System.out.println("\t Don't get cocky. You still have a long way to go.");
+        System.out.println("\t You have " + this.tasks.size() + " tasks left.");
+    }
 }

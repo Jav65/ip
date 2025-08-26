@@ -120,9 +120,18 @@ public class Stewie {
                 taskList.addTask(new EventTask(parts[0].trim(), parts[1].trim(), parts[2].trim()));
                 break;
             }
+            case "delete": {
+                int idx = parseIndexOrThrow(args, "delete <index>\n\t Expected an integer index!");
+                try {
+                    taskList.deleteTask(idx);
+                } catch (IndexOutOfBoundsException e) {
+                    throw new OutOfRangeException("\t There's no task at index " + idx);
+                }
+                break;
+            }
             default:
                 throw new UnknownCommandException("\t\tlist, mark <i>, unmark <i>, todo <desc>, deadline <desc> /by <time>," +
-                                                    "\n\t\tevent <desc> /from <start> /to <end>, bye");
+                                                    "\n\t\tevent <desc> /from <start> /to <end>, delete <i>, bye");
         }
         System.out.print(hr);
 
