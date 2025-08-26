@@ -1,5 +1,7 @@
 import java.util.Scanner;
-import Task.Task;
+import Task.ToDoTask;
+import Task.DeadlineTask;
+import Task.EventTask;
 
 public class Stewie {
     public static final String logo =
@@ -47,23 +49,27 @@ public class Stewie {
             return false;
         }
 
+        System.out.print(hr);
         if (command.equals("list")) {
-            System.out.print(hr);
             taskList.listTask();
-            System.out.print(hr);
         } else if (command.startsWith("mark")) {
-            System.out.print(hr);
             taskList.markTask(Integer.parseInt(command.split("\\s+")[1]));
-            System.out.print(hr);
         } else if (command.startsWith("unmark")) {
-            System.out.print(hr);
             taskList.unmarkTask(Integer.parseInt(command.split("\\s+")[1]));
-            System.out.print(hr);
-        } else {
-            System.out.print(hr);
-            taskList.addTask(new Task(command));
-            System.out.print(hr);
+        } else if (command.startsWith("todo")){
+            String[] args = command.split("\\s+",2);
+            String description = args[1];
+            taskList.addTask(new ToDoTask(description));
+        } else if (command.startsWith("deadline")){
+            String[] args = command.split("\\s+/by\\s+");
+            String description = args[0].substring("deadline".length()).trim();
+            taskList.addTask(new DeadlineTask(description, args[1]));
+        } else if (command.startsWith("event")){
+            String[] args = command.split("\\s+/(from|to)\\s+");
+            String description = args[0].substring("event".length()).trim();
+            taskList.addTask(new EventTask(description, args[1], args[2]));
         }
+        System.out.print(hr);
 
         return true;
     }

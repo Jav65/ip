@@ -10,15 +10,17 @@ public class TaskList {
 
     public void addTask(Task task) {
         this.tasks.add(task);
-        System.out.println("\t I've scribbled down your little task: " + task.getDescription());
+        System.out.println("\t I've scribbled down your little task:");
+        System.out.println("\t  " + task.getDescription());
         System.out.println("\t Now, do try to keep up, won't you?");
+        System.out.println("\t You have " + this.tasks.size() + " tasks left.");
     }
 
     public void markTask(int i) {
         Task task = this.tasks.get(i - 1);
         task.markAsDone();
         System.out.println("\t Behold! I've declared this paltry task complete.");
-        System.out.println("\t  " + task.getDescriptionWithMark());
+        System.out.println("\t  " + task.getDescription());
         System.out.println("\t Don't get cocky. You still have a long way to go.");
     }
 
@@ -26,7 +28,7 @@ public class TaskList {
         Task task = this.tasks.get(i - 1);
         task.unmark();
         System.out.println("\t You're toying with me! I've marked this back as incomplete.");
-        System.out.println("\t  " + task.getDescriptionWithMark());
+        System.out.println("\t  " + task.getDescription());
         System.out.println("\t Don't think for a second I'll forget this betrayal.");
     }
 
@@ -39,7 +41,7 @@ public class TaskList {
         System.out.println("\t These, my dear simpleton, are the items on your agenda.");
         int i = 1;
         for (Task task : tasks) {
-            System.out.println("\t  " + i + ". " + task.getDescriptionWithMark());
+            System.out.println("\t  " + i + ". " + task.getDescription());
             i++;
         }
         System.out.println("\t Failure is not an option.");

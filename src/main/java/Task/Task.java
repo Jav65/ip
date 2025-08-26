@@ -18,10 +18,6 @@ public class Task {
     }
 
     public String getDescription() {
-        return this.description;
-    }
-
-    public String getDescriptionWithMark() {
         return ((this.isDone) ? "[X] " : "[ ] " ) + this.description;
     }
 }
