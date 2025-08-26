@@ -10,7 +10,7 @@ import Task.EventTask;
 
 public class Stewie {
     public static final String logo =
-            "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⡶⠦⢤⠴⠒⠒⠚⠛⠒⢶⠤⠤⠤⣤⣤⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
+                    "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⡶⠦⢤⠴⠒⠒⠚⠛⠒⢶⠤⠤⠤⣤⣤⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
                     "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⡦⠴⣒⠉⠁⠀⠀⠀⠀⠑⠀⠀⠀⠀⠀⠈⠃⠀⠀⠀⠀⠹⡝⠒⠤⣄⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
                     "⠀⠀⠀⠀⠀⠀⠀⢀⡾⠋⠙⠒⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠁⠈⠓⢄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
                     "⠀⠀⠀⠀⠀⢀⡴⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ ⠙⢧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
@@ -49,17 +49,6 @@ public class Stewie {
 
     private static TaskList taskList = new TaskList();
 
-    private static int parseIndexOrThrow(String args, String usage) throws InvalidCommandException {
-        if (args == null || args.isBlank()) {
-            throw new InvalidCommandException(usage);
-        }
-        try {
-            return Integer.parseInt(args.trim());
-        } catch (NumberFormatException e) {
-            throw new InvalidCommandException(usage);
-        }
-    }
-
     public static boolean parse_command(String input) throws CommandException {
         if (input == null) return true;
         input = input.trim();
@@ -70,17 +59,17 @@ public class Stewie {
         }
 
         String[] cmdNArgs = input.split("\\s+", 2);
-        String command = cmdNArgs[0];
+        CommandType commandType = Helper.parseCommandType(cmdNArgs[0]);
         String args = cmdNArgs.length > 1 ? cmdNArgs[1] : "";
 
         System.out.print(hr);
-        switch (command) {
-            case "list": {
+        switch (commandType) {
+            case LIST: {
                 taskList.listTask();
                 break;
             }
-            case "mark": {
-                int idx = parseIndexOrThrow(args, "mark <index>\n\t Expected an integer index!");
+            case MARK: {
+                int idx = Helper.parseIndexOrThrow(args, "mark <index>\n\t Expected an integer index!");
                 try {
                     taskList.markTask(idx);
                 } catch (IndexOutOfBoundsException e) {
@@ -88,8 +77,8 @@ public class Stewie {
                 }
                 break;
             }
-            case "unmark": {
-                int idx = parseIndexOrThrow(args, "unmark <index>\n\t Expected an integer index!");
+            case UNMARK: {
+                int idx = Helper.parseIndexOrThrow(args, "unmark <index>\n\t Expected an integer index!");
                 try {
                     taskList.unmarkTask(idx);
                 } catch (IndexOutOfBoundsException e) {
@@ -97,14 +86,14 @@ public class Stewie {
                 }
                 break;
             }
-            case "todo": {
+            case TODO: {
                 if (args.isBlank()) {
                     throw new InvalidCommandException("todo <description>");
                 }
                 taskList.addTask(new ToDoTask(args.trim()));
                 break;
             }
-            case "deadline": {
+            case DEADLINE: {
                 String[] parts = args.split("\\s+/by\\s+", 2);
                 if (parts.length < 2 || parts[0].isBlank() || parts[1].isBlank()) {
                     throw new InvalidCommandException("deadline <description> /by <time>");
@@ -112,7 +101,7 @@ public class Stewie {
                 taskList.addTask(new DeadlineTask(parts[0].trim(), parts[1].trim()));
                 break;
             }
-            case "event": {
+            case EVENT: {
                 String[] parts = args.split("\\s+/from\\s+|\\s+/to\\s+");
                 if (parts.length < 3 || parts[0].isBlank() || parts[1].isBlank() || parts[2].isBlank()) {
                     throw new InvalidCommandException("event <description> /from <start> /to <end>");
@@ -120,8 +109,8 @@ public class Stewie {
                 taskList.addTask(new EventTask(parts[0].trim(), parts[1].trim(), parts[2].trim()));
                 break;
             }
-            case "delete": {
-                int idx = parseIndexOrThrow(args, "delete <index>\n\t Expected an integer index!");
+            case DELETE: {
+                int idx = Helper.parseIndexOrThrow(args, "delete <index>\n\t Expected an integer index!");
                 try {
                     taskList.deleteTask(idx);
                 } catch (IndexOutOfBoundsException e) {
