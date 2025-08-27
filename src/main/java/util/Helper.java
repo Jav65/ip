@@ -1,4 +1,4 @@
-import Exceptions.InvalidCommandException;
+import exceptions.InvalidCommandException;
 
 public class Helper {
     public static int parseIndexOrThrow(String args, String usage) throws InvalidCommandException {
