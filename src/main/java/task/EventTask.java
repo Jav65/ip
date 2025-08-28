@@ -21,6 +21,11 @@ public class EventTask extends Task {
     }
 
     @Override
+    public String toFileFormat() {
+        return "E | " + super.toFileFormat() + " | " + this.startTime + " | " + this.endTime;
+    }
+
+    @Override
     public String getDescription() {
         return "[E]" + super.getDescription() + " (from: " + this.startTime + " to: " + this.endTime + ")";
     }

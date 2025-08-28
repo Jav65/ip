@@ -3,7 +3,7 @@ package task;
 /**
  * Represents a basic task with a description and completion status.
  */
-public class Task {
+public abstract class Task {
     protected String description;
     protected boolean isDone;
 
@@ -30,6 +30,16 @@ public class Task {
      */
     public void unmark() {
         this.isDone = false;
+    }
+
+    /**
+     * Converts the task to file format for storage.
+     * Each subclass must implement this method to define its specific serialization format.
+     *
+     * @return The task in file format.
+     */
+    public String toFileFormat() {
+        return ((this.isDone) ? "1" : "0" ) + " | " + this.description;
     }
 
     /**
