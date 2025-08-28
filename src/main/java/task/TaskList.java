@@ -1,5 +1,7 @@
 package task;
 
+import util.Helper;
+
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -98,13 +100,13 @@ public class TaskList {
             if (parts.length < 4) {
                 throw new IllegalArgumentException("Missing deadline");
             }
-            task = new DeadlineTask(description, parts[3]);
+            task = new DeadlineTask(description, Helper.parseDateTime(parts[3]));
             break;
         case "E":
             if (parts.length < 5) {
                 throw new IllegalArgumentException("Missing event time");
             }
-            task = new EventTask(description, parts[3], parts[4]);
+            task = new EventTask(description, Helper.parseDateTime(parts[3]), Helper.parseDateTime(parts[4]));
             break;
         default:
             throw new IllegalArgumentException("Unknown task type: " + type);

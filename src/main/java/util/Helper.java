@@ -3,6 +3,12 @@ package util;
 import command.CommandType;
 import exceptions.InvalidCommandException;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.Locale;
+
 /**
  * Utility class providing helper methods for parsing and validation.
  */
@@ -39,5 +45,35 @@ public class Helper {
         } catch (IllegalArgumentException e) {
             return CommandType.UNKNOWN;
         }
+    }
+
+    public static LocalDateTime parseDateTime(String dateTimeString) {
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        try {
+            return LocalDateTime.parse(dateTimeString, dateTimeFormatter);
+        } catch (DateTimeParseException e) {
+            try {
+                return LocalDate.parse(dateTimeString, dateFormatter).atStartOfDay();
+            } catch (DateTimeParseException e2) {
+                return null;
+            }
+        }
+    }
+
+    public static String dateTimeToString(LocalDateTime dateTime) {
+        DateTimeFormatter fullFormatter = DateTimeFormatter.ofPattern("dd MMM yyyy HH:mm", Locale.ENGLISH);
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd MMM yyyy", Locale.ENGLISH);
+
+        if (dateTime.toLocalTime().equals(java.time.LocalTime.MIDNIGHT)) {
+            return dateTime.format(dateFormatter);
+        } else {
+            return dateTime.format(fullFormatter);
+        }
+    }
+
+    public static String dateTimeToFileFormat(LocalDateTime dateTime) {
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+        return dateTime.format(dateTimeFormatter);
     }
 }
