@@ -1,11 +1,15 @@
 package task;
 
+import util.Helper;
+
+import java.time.LocalDateTime;
+
 /**
  * Represents a task that occurs during a specific time period.
  */
 public class EventTask extends Task {
-    protected String startTime;
-    protected String endTime;
+    protected LocalDateTime startTime;
+    protected LocalDateTime endTime;
 
     /**
      * Creates a new EventTask with the specified description, start time, and end time.
@@ -14,7 +18,7 @@ public class EventTask extends Task {
      * @param startTime The start time of the event.
      * @param endTime The end time of the event.
      */
-    public EventTask(String description, String startTime, String endTime) {
+    public EventTask(String description, LocalDateTime startTime, LocalDateTime endTime) {
         super(description);
         this.startTime = startTime;
         this.endTime = endTime;
@@ -22,11 +26,11 @@ public class EventTask extends Task {
 
     @Override
     public String toFileFormat() {
-        return "E | " + super.toFileFormat() + " | " + this.startTime + " | " + this.endTime;
+        return "E | " + super.toFileFormat() + " | " + Helper.dateTimeToFileFormat(startTime) + " | " + Helper.dateTimeToFileFormat(endTime);
     }
 
     @Override
     public String getDescription() {
-        return "[E]" + super.getDescription() + " (from: " + this.startTime + " to: " + this.endTime + ")";
+        return "[E]" + super.getDescription() + " (from: " + Helper.dateTimeToString(startTime) + " to: " + Helper.dateTimeToString(endTime) + ")";
     }
 }

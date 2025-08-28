@@ -1,10 +1,14 @@
 package task;
 
+import util.Helper;
+
+import java.time.LocalDateTime;
+
 /**
  * Represents a task with a deadline.
  */
 public class DeadlineTask extends Task {
-    protected String deadline;
+    protected LocalDateTime deadline;
 
     /**
      * Creates a new DeadlineTask with the specified description and deadline.
@@ -12,18 +16,18 @@ public class DeadlineTask extends Task {
      * @param description The task description.
      * @param deadline The deadline for the task.
      */
-    public DeadlineTask(String description, String deadline) {
+    public DeadlineTask(String description, LocalDateTime deadline) {
         super(description);
         this.deadline = deadline;
     }
 
     @Override
     public String toFileFormat() {
-        return "D | " + super.toFileFormat() + " | " + this.deadline;
+        return "D | " + super.toFileFormat() + " | " + Helper.dateTimeToFileFormat(deadline);
     }
 
     @Override
     public String getDescription() {
-        return "[D]" + super.getDescription() + " (by: " + this.deadline + ")";
+        return "[D]" + super.getDescription() + " (by: " + Helper.dateTimeToString(deadline) + ")";
     }
 }

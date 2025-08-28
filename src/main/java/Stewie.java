@@ -1,3 +1,4 @@
+import java.time.LocalDateTime;
 import java.util.Scanner;
 
 import command.CommandType;
@@ -178,9 +179,14 @@ public class Stewie {
     private static void handleDeadlineCommand(String args) throws InvalidCommandException {
         String[] parts = args.split("\\s+/by\\s+", 2);
         if (parts.length < 2 || parts[0].isBlank() || parts[1].isBlank()) {
-            throw new InvalidCommandException("deadline <description> /by <time>");
+            throw new InvalidCommandException("deadline <description> /by <dd/MM/yyyy> <HH:mm>");
         }
-        taskList.addTask(new DeadlineTask(parts[0].trim(), parts[1].trim()));
+        LocalDateTime deadline = Helper.parseDateTime(parts[1].trim());
+        if (deadline == null) {
+            throw new InvalidCommandException("deadline <description> /by <dd/MM/yyyy> <HH:mm>");
+        }
+
+        taskList.addTask(new DeadlineTask(parts[0].trim(), deadline));
     }
 
     /**
@@ -192,9 +198,15 @@ public class Stewie {
     private static void handleEventCommand(String args) throws InvalidCommandException {
         String[] parts = args.split("\\s+/from\\s+|\\s+/to\\s+");
         if (parts.length < 3 || parts[0].isBlank() || parts[1].isBlank() || parts[2].isBlank()) {
-            throw new InvalidCommandException("event <description> /from <start> /to <end>");
+            throw new InvalidCommandException("event <description> /from <dd/MM/yyyy> <HH:mm> /to <dd/MM/yyyy> <HH:mm>");
         }
-        taskList.addTask(new EventTask(parts[0].trim(), parts[1].trim(), parts[2].trim()));
+        LocalDateTime startTime = Helper.parseDateTime(parts[1].trim());
+        LocalDateTime endTime = Helper.parseDateTime(parts[2].trim());
+        if (startTime == null || endTime == null) {
+            throw new InvalidCommandException("event <description> /from <dd/MM/yyyy> <HH:mm> /to <dd/MM/yyyy> <HH:mm>");
+        }
+
+        taskList.addTask(new EventTask(parts[0].trim(), startTime, endTime));
     }
 
     /**
