@@ -1,18 +1,19 @@
+package stewie;
+
 import java.util.Scanner;
 
-import command.Command;
-import exceptions.CommandException;
-import storage.Storage;
-import task.TaskList;
-import parser.Parser;
+import stewie.command.Command;
+import stewie.exceptions.CommandException;
+import stewie.storage.Storage;
+import stewie.task.TaskList;
+import stewie.parser.Parser;
 
-import static parser.Parser.parse_command;
-import static ui.Ui.HR;
-import ui.Ui;
+import static stewie.ui.Ui.HR;
+import stewie.ui.Ui;
 
 /**
- * Main class for the Stewie chatbot.
- * Handles user input, command parsing, and task operations.
+ * Main class for the stewie.Stewie chatbot.
+ * Handles user input, stewie.command parsing, and stewie.task operations.
  */
 public class Stewie {
     private static final String DATA_FILE_PATH = "./data/tasks.txt";

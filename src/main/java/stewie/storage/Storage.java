@@ -1,7 +1,7 @@
-package storage;
+package stewie.storage;
 
-import task.*;
-import util.Helper;
+import stewie.task.*;
+import stewie.util.Helper;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -42,7 +42,7 @@ public class Storage {
         }
 
         if (!Files.exists(filePath)) {
-            System.out.println("\t No existing data file found. Starting with empty task list.");
+            System.out.println("\t No existing data file found. Starting with empty stewie.task list.");
             return taskList;
         }
 
@@ -106,7 +106,7 @@ public class Storage {
                 task = new EventTask(description, Helper.parseDateTime(parts[3]), Helper.parseDateTime(parts[4]));
                 break;
             default:
-                throw new IllegalArgumentException("Unknown task type: " + type);
+                throw new IllegalArgumentException("Unknown stewie.task type: " + type);
         }
 
         if (isDone) {

@@ -1,7 +1,7 @@
-package exceptions;
+package stewie.exceptions;
 
 /**
- * Represents an exception thrown when a command has invalid format or parameters.
+ * Represents an exception thrown when a stewie.command has invalid format or parameters.
  */
 public class InvalidCommandException extends CommandException {
 

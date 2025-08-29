@@ -1,4 +1,4 @@
-package command;
+package stewie.command;
 
 /**
  * Represents the different types of commands that can be executed.

@@ -1,10 +1,10 @@
-package parser;
+package stewie.parser;
 
-import command.*;
-import exceptions.CommandException;
-import exceptions.InvalidCommandException;
-import exceptions.UnknownCommandException;
-import util.Helper;
+import stewie.command.*;
+import stewie.exceptions.CommandException;
+import stewie.exceptions.InvalidCommandException;
+import stewie.exceptions.UnknownCommandException;
+import stewie.util.Helper;
 
 public class Parser {
     public static Command parse_command(String input) throws CommandException {

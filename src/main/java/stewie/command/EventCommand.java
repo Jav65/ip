@@ -1,11 +1,11 @@
-package command;
+package stewie.command;
 
-import exceptions.CommandException;
-import exceptions.InvalidCommandException;
-import storage.Storage;
-import task.EventTask;
-import task.TaskList;
-import util.Helper;
+import stewie.exceptions.CommandException;
+import stewie.exceptions.InvalidCommandException;
+import stewie.storage.Storage;
+import stewie.task.EventTask;
+import stewie.task.TaskList;
+import stewie.util.Helper;
 
 import java.time.LocalDateTime;
 
@@ -17,7 +17,7 @@ public class EventCommand implements Command {
     }
 
     /**
-     * Handles the event command to add a new event task.
+     * Handles the event stewie.command to add a new event stewie.task.
      */
     @Override
     public String execute(TaskList taskList, Storage storage) throws CommandException {

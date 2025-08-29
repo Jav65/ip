@@ -1,11 +1,11 @@
-package task;
+package stewie.task;
 
-import util.Helper;
+import stewie.util.Helper;
 
 import java.time.LocalDateTime;
 
 /**
- * Represents a task that occurs during a specific time period.
+ * Represents a stewie.task that occurs during a specific time period.
  */
 public class EventTask extends Task {
     protected LocalDateTime startTime;
@@ -14,7 +14,7 @@ public class EventTask extends Task {
     /**
      * Creates a new EventTask with the specified description, start time, and end time.
      *
-     * @param description The task description.
+     * @param description The stewie.task description.
      * @param startTime The start time of the event.
      * @param endTime The end time of the event.
      */

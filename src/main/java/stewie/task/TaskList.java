@@ -1,14 +1,5 @@
-package task;
+package stewie.task;
 
-import util.Helper;
-
-import java.io.BufferedInputStream;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class TaskList {
@@ -24,7 +15,7 @@ public class TaskList {
 
     public String addTask(Task task) {
         this.tasks.add(task);
-        return "\t I've scribbled down your little task:\n" +
+        return "\t I've scribbled down your little stewie.task:\n" +
                 "\t  " + task.getDescription() + "\n" +
                 "\t Now, do try to keep up, won't you?\n" +
                 "\t You have " + this.tasks.size() + " tasks left.\n";
@@ -33,7 +24,7 @@ public class TaskList {
     public String markTask(int i) {
         Task task = this.tasks.get(i - 1);
         task.markAsDone();
-        return "\t Behold! I've declared this paltry task complete.\n" +
+        return "\t Behold! I've declared this paltry stewie.task complete.\n" +
                 "\t  " + task.getDescription() + "\n" +
                 "\t Don't get cocky. You still have a long way to go.\n";
     }
