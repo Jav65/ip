@@ -1,7 +1,7 @@
-package util;
+package stewie.util;
 
-import command.CommandType;
-import exceptions.InvalidCommandException;
+import stewie.command.CommandType;
+import stewie.exceptions.InvalidCommandException;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;

@@ -1,4 +1,4 @@
-Ah, a new face. Hullo! I'm Stewie!
+Ah, a new face. Hullo! I'm stewie.Stewie!
 ????????????????????????????????????????????????????????????
 ????????????????????????????????????????????????????????????
 ????????????????????????????????????????????????????????????
@@ -28,7 +28,7 @@ Ah, a new face. Hullo! I'm Stewie!
 	 State your purpose before I lose what's left of my patience.
 	________________________________________________________________________
 $ 	________________________________________________________________________
-	 I've scribbled down your little task:
+	 I've scribbled down your little stewie.task:
 	  [T][ ] watch CS2103 week 3 breifing
 	 Now, do try to keep up, won't you?
 	 You have 1 tasks left.
@@ -39,7 +39,7 @@ $ 	________________________________________________________________________
 	 Failure is not an option.
 	________________________________________________________________________
 $ 	________________________________________________________________________
-	 I've scribbled down your little task:
+	 I've scribbled down your little stewie.task:
 	  [D][ ] CS2103 Quiz 3 (by: 29/08 16:00)
 	 Now, do try to keep up, won't you?
 	 You have 2 tasks left.
@@ -51,7 +51,7 @@ $ 	________________________________________________________________________
 	 Failure is not an option.
 	________________________________________________________________________
 $ 	________________________________________________________________________
-	 I've scribbled down your little task:
+	 I've scribbled down your little stewie.task:
 	  [E][ ] CS2103 Tutorial (from: 27 Aug 9am to: 10am)
 	 Now, do try to keep up, won't you?
 	 You have 3 tasks left.
@@ -64,12 +64,12 @@ $ 	________________________________________________________________________
 	 Failure is not an option.
 	________________________________________________________________________
 $ 	________________________________________________________________________
-	 Behold! I've declared this paltry task complete.
+	 Behold! I've declared this paltry stewie.task complete.
 	  [D][X] CS2103 Quiz 3 (by: 29/08 16:00)
 	 Don't get cocky. You still have a long way to go.
 	________________________________________________________________________
 $ 	________________________________________________________________________
-	 Behold! I've declared this paltry task complete.
+	 Behold! I've declared this paltry stewie.task complete.
 	  [T][X] watch CS2103 week 3 breifing
 	 Don't get cocky. You still have a long way to go.
 	________________________________________________________________________
@@ -86,7 +86,7 @@ $ 	________________________________________________________________________
 	 Don't think for a second I'll forget this betrayal.
 	________________________________________________________________________
 $ 	________________________________________________________________________
-	 Behold! I've declared this paltry task complete.
+	 Behold! I've declared this paltry stewie.task complete.
 	  [E][X] CS2103 Tutorial (from: 27 Aug 9am to: 10am)
 	 Don't get cocky. You still have a long way to go.
 	________________________________________________________________________

@@ -1,10 +1,10 @@
-package command;
+package stewie.command;
 
-import exceptions.CommandException;
-import exceptions.OutOfRangeException;
-import storage.Storage;
-import task.TaskList;
-import util.Helper;
+import stewie.exceptions.CommandException;
+import stewie.exceptions.OutOfRangeException;
+import stewie.storage.Storage;
+import stewie.task.TaskList;
+import stewie.util.Helper;
 
 public class DeleteCommand implements Command {
     private final String args;
@@ -13,7 +13,7 @@ public class DeleteCommand implements Command {
         this.args = args;
     }
     /**
-     * Handles the delete command to remove a task.
+     * Handles the delete stewie.command to remove a stewie.task.
      */
     @Override
     public String execute(TaskList taskList, Storage storage) throws CommandException {
@@ -22,7 +22,7 @@ public class DeleteCommand implements Command {
         try {
             response = taskList.deleteTask(idx);
         } catch (IndexOutOfBoundsException e) {
-            throw new OutOfRangeException("\t There's no task at index " + idx);
+            throw new OutOfRangeException("\t There's no stewie.task at index " + idx);
         }
         storage.saveTasks(taskList);
         return response;

@@ -1,10 +1,10 @@
-package command;
+package stewie.command;
 
-import exceptions.CommandException;
-import exceptions.OutOfRangeException;
-import storage.Storage;
-import task.TaskList;
-import util.Helper;
+import stewie.exceptions.CommandException;
+import stewie.exceptions.OutOfRangeException;
+import stewie.storage.Storage;
+import stewie.task.TaskList;
+import stewie.util.Helper;
 
 public class MarkCommand implements Command {
     private final String args;
@@ -14,7 +14,7 @@ public class MarkCommand implements Command {
     }
 
     /**
-     * Handles the mark command to mark a task as done.
+     * Handles the mark stewie.command to mark a stewie.task as done.
      */
     @Override
     public String execute(TaskList taskList, Storage storage) throws CommandException {
@@ -23,7 +23,7 @@ public class MarkCommand implements Command {
         try {
             response = taskList.markTask(idx);
         } catch (IndexOutOfBoundsException e) {
-            throw new OutOfRangeException("\t There's no task at index " + idx);
+            throw new OutOfRangeException("\t There's no stewie.task at index " + idx);
         }
         storage.saveTasks(taskList);
         return response;

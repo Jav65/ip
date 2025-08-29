@@ -1,8 +1,8 @@
-package command;
+package stewie.command;
 
-import exceptions.CommandException;
-import storage.Storage;
-import task.TaskList;
+import stewie.exceptions.CommandException;
+import stewie.storage.Storage;
+import stewie.task.TaskList;
 
 public class ListCommand implements Command {
 

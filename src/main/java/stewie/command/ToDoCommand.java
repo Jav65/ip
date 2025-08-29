@@ -1,10 +1,10 @@
-package command;
+package stewie.command;
 
-import exceptions.CommandException;
-import exceptions.InvalidCommandException;
-import storage.Storage;
-import task.TaskList;
-import task.ToDoTask;
+import stewie.exceptions.CommandException;
+import stewie.exceptions.InvalidCommandException;
+import stewie.storage.Storage;
+import stewie.task.TaskList;
+import stewie.task.ToDoTask;
 
 public class ToDoCommand implements Command {
     private final String args;
@@ -14,7 +14,7 @@ public class ToDoCommand implements Command {
     }
 
     /**
-     * Handles the todo command to add a new todo task.
+     * Handles the todo stewie.command to add a new todo stewie.task.
      */
     @Override
     public String execute(TaskList taskList, Storage storage) throws CommandException {

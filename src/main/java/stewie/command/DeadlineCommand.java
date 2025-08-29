@@ -1,13 +1,13 @@
-package command;
+package stewie.command;
 
-import exceptions.CommandException;
-import storage.Storage;
-import task.TaskList;
-import util.Helper;
+import stewie.exceptions.CommandException;
+import stewie.storage.Storage;
+import stewie.task.TaskList;
+import stewie.util.Helper;
 import java.time.LocalDateTime;
-import task.DeadlineTask;
+import stewie.task.DeadlineTask;
 
-import exceptions.InvalidCommandException;
+import stewie.exceptions.InvalidCommandException;
 
 public class DeadlineCommand implements Command {
     private final String args;
@@ -17,7 +17,7 @@ public class DeadlineCommand implements Command {
     }
 
     /**
-     * Handles the deadline command to add a new deadline task.
+     * Handles the deadline stewie.command to add a new deadline stewie.task.
      */
     @Override
     public String execute(TaskList taskList, Storage storage) throws CommandException {

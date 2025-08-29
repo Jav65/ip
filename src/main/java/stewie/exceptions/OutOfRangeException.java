@@ -1,4 +1,4 @@
-package exceptions;
+package stewie.exceptions;
 
 /**
  * Represents an exception thrown when a parameter is outside the acceptable range.
