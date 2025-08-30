@@ -1,3 +1,4 @@
+
 package stewie.command;
 
 import stewie.exceptions.CommandException;
@@ -21,6 +22,7 @@ public class ToDoCommand implements Command {
         if (args.isBlank()) {
             throw new InvalidCommandException("todo <description>");
         }
+
         String response = taskList.addTask(new ToDoTask(args.trim()));
         storage.saveTasks(taskList);
         return response;

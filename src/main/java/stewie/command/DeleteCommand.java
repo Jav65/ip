@@ -12,6 +12,7 @@ public class DeleteCommand implements Command {
     public DeleteCommand(String args) {
         this.args = args;
     }
+
     /**
      * Handles the delete command to remove a task.
      */

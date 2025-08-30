@@ -39,7 +39,7 @@ public abstract class Task {
      * @return The task in file format.
      */
     public String toFileFormat() {
-        return ((this.isDone) ? "1" : "0" ) + " | " + this.description;
+        return ((this.isDone) ? "1" : "0") + " | " + this.description;
     }
 
     /**
@@ -48,6 +48,6 @@ public abstract class Task {
      * @return The formatted task description.
      */
     public String getDescription() {
-        return ((this.isDone) ? "[X] " : "[ ] " ) + this.description;
+        return ((this.isDone) ? "[X] " : "[ ] ") + this.description;
     }
 }
