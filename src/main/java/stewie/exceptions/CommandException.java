@@ -1,7 +1,7 @@
 package stewie.exceptions;
 
 /**
- * Represents an exception thrown when a stewie.command-related error occurs.
+ * Represents an exception thrown when a command-related error occurs.
  */
 public class CommandException extends Exception {
 

@@ -1,14 +1,14 @@
 package stewie.task;
 
 /**
- * Represents a simple to-do stewie.task without specific timing constraints.
+ * Represents a simple to-do task without specific timing constraints.
  */
 public class ToDoTask extends Task {
 
     /**
      * Creates a new ToDoTask with the specified description.
      *
-     * @param description The stewie.task description.
+     * @param description The task description.
      */
     public ToDoTask(String description) {
         super(description);

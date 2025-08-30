@@ -33,7 +33,7 @@ public class Ui {
      * Displays the greeting message when the app starts.
      */
     public static void showGreeting() {
-        System.out.printf(HR + "\t Ah, a new face. Hullo! I'm stewie.Stewie!\n" + LOGO + HR +
+        System.out.printf(HR + "\t Ah, a new face. Hullo! I'm Stewie!\n" + LOGO + HR +
                 "\t Don't just stand there, minion.\n" +
                 "\t State your purpose before I lose what's left of my patience.\n" + HR);
     }

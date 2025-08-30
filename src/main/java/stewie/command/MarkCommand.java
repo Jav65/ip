@@ -14,7 +14,7 @@ public class MarkCommand implements Command {
     }
 
     /**
-     * Handles the mark stewie.command to mark a stewie.task as done.
+     * Handles the mark command to mark a task as done.
      */
     @Override
     public String execute(TaskList taskList, Storage storage) throws CommandException {
@@ -23,7 +23,7 @@ public class MarkCommand implements Command {
         try {
             response = taskList.markTask(idx);
         } catch (IndexOutOfBoundsException e) {
-            throw new OutOfRangeException("\t There's no stewie.task at index " + idx);
+            throw new OutOfRangeException("\t There's no task at index " + idx);
         }
         storage.saveTasks(taskList);
         return response;

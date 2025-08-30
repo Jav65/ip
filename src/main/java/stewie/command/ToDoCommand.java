@@ -14,7 +14,7 @@ public class ToDoCommand implements Command {
     }
 
     /**
-     * Handles the todo stewie.command to add a new todo stewie.task.
+     * Handles the todo command to add a new todo task.
      */
     @Override
     public String execute(TaskList taskList, Storage storage) throws CommandException {

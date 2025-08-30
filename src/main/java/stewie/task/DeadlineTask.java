@@ -5,7 +5,7 @@ import stewie.util.Helper;
 import java.time.LocalDateTime;
 
 /**
- * Represents a stewie.task with a deadline.
+ * Represents a task with a deadline.
  */
 public class DeadlineTask extends Task {
     protected LocalDateTime deadline;
@@ -13,8 +13,8 @@ public class DeadlineTask extends Task {
     /**
      * Creates a new DeadlineTask with the specified description and deadline.
      *
-     * @param description The stewie.task description.
-     * @param deadline The deadline for the stewie.task.
+     * @param description The task description.
+     * @param deadline The deadline for the task.
      */
     public DeadlineTask(String description, LocalDateTime deadline) {
         super(description);

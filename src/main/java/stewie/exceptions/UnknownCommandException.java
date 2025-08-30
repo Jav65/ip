@@ -1,7 +1,7 @@
 package stewie.exceptions;
 
 /**
- * Represents an exception thrown when an unknown stewie.command is encountered.
+ * Represents an exception thrown when an unknown command is encountered.
  */
 public class UnknownCommandException extends CommandException {
 
