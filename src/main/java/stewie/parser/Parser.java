@@ -6,6 +6,7 @@ import stewie.command.CommandType;
 import stewie.command.DeadlineCommand;
 import stewie.command.DeleteCommand;
 import stewie.command.EventCommand;
+import stewie.command.FindCommand;
 import stewie.command.ListCommand;
 import stewie.command.MarkCommand;
 import stewie.command.ToDoCommand;
@@ -50,6 +51,8 @@ public class Parser {
             return new EventCommand(args);
         case DELETE:
             return new DeleteCommand(args);
+        case FIND:
+            return new FindCommand(args);
         case BYE:
             return new ByeCommand();
         default:
