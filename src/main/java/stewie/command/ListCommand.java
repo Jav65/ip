@@ -4,6 +4,9 @@ import stewie.exceptions.CommandException;
 import stewie.storage.Storage;
 import stewie.task.TaskList;
 
+/**
+ * Represents a command to list all tasks in the task list.
+ */
 public class ListCommand implements Command {
 
     @Override

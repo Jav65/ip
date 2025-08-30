@@ -6,7 +6,17 @@ import stewie.exceptions.InvalidCommandException;
 import stewie.exceptions.UnknownCommandException;
 import stewie.util.Helper;
 
+/**
+ * Parses user input into executable commands.
+ */
 public class Parser {
+    /**
+     * Parses the given input string into a Command object.
+     *
+     * @param input The user input string to parse.
+     * @return The corresponding Command object.
+     * @throws CommandException If the input is invalid or command is unknown.
+     */
     public static Command parse_command(String input) throws CommandException {
         if (input == null || input.isBlank()) {
             throw new InvalidCommandException("Empty input!");

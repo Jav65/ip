@@ -9,9 +9,17 @@ import stewie.task.DeadlineTask;
 
 import stewie.exceptions.InvalidCommandException;
 
+/**
+ * Represents a command to add a deadline task.
+ */
 public class DeadlineCommand implements Command {
     private final String args;
 
+    /**
+     * Creates a new deadline command with the given arguments.
+     *
+     * @param args The command arguments containing task description and deadline.
+     */
     public DeadlineCommand(String args) {
         this.args = args;
     }

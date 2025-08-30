@@ -6,9 +6,17 @@ import stewie.storage.Storage;
 import stewie.task.TaskList;
 import stewie.util.Helper;
 
+/**
+ * Represents a command to mark a task as done.
+ */
 public class MarkCommand implements Command {
     private final String args;
 
+    /**
+     * Creates a new mark command with the given arguments.
+     *
+     * @param args The command arguments containing the task index to mark.
+     */
     public MarkCommand(String args) {
         this.args = args;
     }

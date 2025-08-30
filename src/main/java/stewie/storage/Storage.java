@@ -10,13 +10,26 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+/**
+ * Handles saving and loading of tasks to and from a file.
+ */
 public class Storage {
     private final Path filePath;
 
+    /**
+     * Creates a new Storage instance with the specified file path.
+     *
+     * @param filePath The path to the file where tasks will be stored.
+     */
     public Storage(String filePath) {
         this.filePath = Paths.get(filePath);
     }
 
+    /**
+     * Saves the given task list to the storage file.
+     *
+     * @param taskList The task list to save.
+     */
     public void saveTasks(TaskList taskList) {
         try {
             Files.createDirectories(filePath.getParent());
@@ -32,6 +45,11 @@ public class Storage {
         }
     }
 
+    /**
+     * Loads tasks from the storage file and returns them as a TaskList.
+     *
+     * @return TaskList containing all loaded tasks, or empty list if file doesn't exist or has errors.
+     */
     public TaskList loadTaskList() {
         TaskList taskList = new TaskList();
         try {
