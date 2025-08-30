@@ -33,9 +33,11 @@ public class Stewie {
         while (true) {
             System.out.print("$ ");
             String input = scanner.nextLine();
+
             try {
-                Command command = Parser.parse_command(input);
+                Command command = Parser.parseCommand(input);
                 String response = command.execute(taskList, storage);
+
                 System.out.print(HR);
                 System.out.print(response);
                 System.out.print(HR);
@@ -49,7 +51,6 @@ public class Stewie {
                 System.out.print(HR);
             }
         }
-
 
         Ui.showBye();
     }

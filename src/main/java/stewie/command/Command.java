@@ -1,8 +1,8 @@
 package stewie.command;
 
 import stewie.exceptions.CommandException;
-import stewie.task.TaskList;
 import stewie.storage.Storage;
+import stewie.task.TaskList;
 
 /**
  * Represents a command that can be executed in the application.

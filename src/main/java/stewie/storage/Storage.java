@@ -1,6 +1,10 @@
 package stewie.storage;
 
-import stewie.task.*;
+import stewie.task.DeadlineTask;
+import stewie.task.EventTask;
+import stewie.task.Task;
+import stewie.task.TaskList;
+import stewie.task.ToDoTask;
 import stewie.util.Helper;
 
 import java.io.BufferedReader;
@@ -52,6 +56,7 @@ public class Storage {
      */
     public TaskList loadTaskList() {
         TaskList taskList = new TaskList();
+
         try {
             Files.createDirectories(filePath.getParent());
         } catch (IOException e) {
@@ -71,19 +76,21 @@ public class Storage {
 
             while ((line = reader.readLine()) != null) {
                 lineNumber++;
+
                 try {
                     Task task = parseTaskFromLine(line);
                     if (task != null) {
                         taskList.addTask(task);
                     }
                 } catch (IllegalArgumentException e) {
-                    System.out.println("\t Warning: Skipping corrupted line " + lineNumber + ": " +
-                            line + " (" + e.getMessage() + ")");
+                    System.out.println("\t Warning: Skipping corrupted line " + lineNumber + ": "
+                            + line + " (" + e.getMessage() + ")");
                     corruptedLines++;
                 }
             }
 
             System.out.println("\t Loaded " + taskList.size() + " tasks from data file.");
+
             if (corruptedLines > 0) {
                 System.out.println("\t Skipped " + corruptedLines + " corrupted lines. File will be cleaned up.");
                 saveTasks(taskList);
@@ -98,6 +105,7 @@ public class Storage {
 
     private Task parseTaskFromLine(String line) {
         String[] parts = line.split(" \\| ");
+
         if (parts.length < 3) {
             throw new IllegalArgumentException("Invalid format");
         }
@@ -108,23 +116,23 @@ public class Storage {
 
         Task task;
         switch (type) {
-            case "T":
-                task = new ToDoTask(description);
-                break;
-            case "D":
-                if (parts.length < 4) {
-                    throw new IllegalArgumentException("Missing deadline");
-                }
-                task = new DeadlineTask(description, Helper.parseDateTime(parts[3]));
-                break;
-            case "E":
-                if (parts.length < 5) {
-                    throw new IllegalArgumentException("Missing event time");
-                }
-                task = new EventTask(description, Helper.parseDateTime(parts[3]), Helper.parseDateTime(parts[4]));
-                break;
-            default:
-                throw new IllegalArgumentException("Unknown task type: " + type);
+        case "T":
+            task = new ToDoTask(description);
+            break;
+        case "D":
+            if (parts.length < 4) {
+                throw new IllegalArgumentException("Missing deadline");
+            }
+            task = new DeadlineTask(description, Helper.parseDateTime(parts[3]));
+            break;
+        case "E":
+            if (parts.length < 5) {
+                throw new IllegalArgumentException("Missing event time");
+            }
+            task = new EventTask(description, Helper.parseDateTime(parts[3]), Helper.parseDateTime(parts[4]));
+            break;
+        default:
+            throw new IllegalArgumentException("Unknown task type: " + type);
         }
 
         if (isDone) {

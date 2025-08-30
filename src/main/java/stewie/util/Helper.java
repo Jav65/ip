@@ -5,6 +5,7 @@ import stewie.exceptions.InvalidCommandException;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Locale;
@@ -26,6 +27,7 @@ public class Helper {
         if (args == null || args.isBlank()) {
             throw new InvalidCommandException(usage);
         }
+
         try {
             return Integer.parseInt(args.trim());
         } catch (NumberFormatException e) {
@@ -56,6 +58,7 @@ public class Helper {
     public static LocalDateTime parseDateTime(String dateTimeString) {
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
         try {
             return LocalDateTime.parse(dateTimeString, dateTimeFormatter);
         } catch (DateTimeParseException e) {
@@ -77,7 +80,7 @@ public class Helper {
         DateTimeFormatter fullFormatter = DateTimeFormatter.ofPattern("dd MMM yyyy HH:mm", Locale.ENGLISH);
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd MMM yyyy", Locale.ENGLISH);
 
-        if (dateTime.toLocalTime().equals(java.time.LocalTime.MIDNIGHT)) {
+        if (dateTime.toLocalTime().equals(LocalTime.MIDNIGHT)) {
             return dateTime.format(dateFormatter);
         } else {
             return dateTime.format(fullFormatter);
