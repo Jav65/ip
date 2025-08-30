@@ -25,6 +25,8 @@ public class Parser {
             case EVENT:    return new EventCommand(args);
             case DELETE:   return new DeleteCommand(args);
             case BYE:      return new ByeCommand();
+        case FIND:
+            return new FindCommand(args);
             default: throw new UnknownCommandException("\t\tlist, mark <i>, unmark <i>, todo <desc>, deadline <desc> /by <time>," +
                     "\n\t\tevent <desc> /from <start> /to <end>, delete <i>, bye");
         }

@@ -63,6 +63,31 @@ public class TaskList {
                 "\t You have " + this.tasks.size() + " tasks left.\n";
     }
 
+    /**
+     * Finds tasks containing the specified description keyword.
+     *
+     * @param description The keyword to search for in task descriptions.
+     * @return A formatted string containing all matching tasks, or a message if no matches found.
+     */
+    public String findTaskByDescription(String description) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("\t Hmph! Here are the pathetic, insignificant plans that you requested.\n");
+
+        int index = 1;
+        for (Task task : tasks) {
+            if (task.getDescription().contains(description)) {
+                sb.append("\t  ").append(index).append(". ").append(task.getDescription()).append("\n");
+                index++;
+            }
+        }
+
+        if (index == 1) {
+            return "\t You've wasted my time. Absolutely nothing of consequence was found.\n";
+        }
+
+        return sb.toString();
+    }
+
     public int size() {
         return tasks.size();
     }
