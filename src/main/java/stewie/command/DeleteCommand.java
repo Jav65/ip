@@ -6,12 +6,21 @@ import stewie.storage.Storage;
 import stewie.task.TaskList;
 import stewie.util.Helper;
 
+/**
+ * Represents a command to delete a task.
+ */
 public class DeleteCommand implements Command {
     private final String args;
 
+    /**
+     * Creates a new delete command with the given arguments.
+     *
+     * @param args The command arguments containing the task index to delete.
+     */
     public DeleteCommand(String args) {
         this.args = args;
     }
+
     /**
      * Handles the delete command to remove a task.
      */

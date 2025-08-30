@@ -9,9 +9,17 @@ import stewie.util.Helper;
 
 import java.time.LocalDateTime;
 
+/**
+ * Represents a command to add a event task.
+ */
 public class EventCommand implements Command {
     private final String args;
 
+    /**
+     * Creates a new event command with the given arguments.
+     *
+     * @param args The command arguments containing task description, start time, and end time.
+     */
     public EventCommand(String args) {
         this.args = args;
     }

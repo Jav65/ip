@@ -47,6 +47,12 @@ public class Helper {
         }
     }
 
+    /**
+     * Parses a date-time string in various formats to LocalDateTime.
+     *
+     * @param dateTimeString The date-time string to parse.
+     * @return LocalDateTime object if parsing succeeds, null otherwise.
+     */
     public static LocalDateTime parseDateTime(String dateTimeString) {
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -61,6 +67,12 @@ public class Helper {
         }
     }
 
+    /**
+     * Converts a LocalDateTime to a human-readable string format.
+     *
+     * @param dateTime The LocalDateTime to convert.
+     * @return Formatted date-time string for display.
+     */
     public static String dateTimeToString(LocalDateTime dateTime) {
         DateTimeFormatter fullFormatter = DateTimeFormatter.ofPattern("dd MMM yyyy HH:mm", Locale.ENGLISH);
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd MMM yyyy", Locale.ENGLISH);
@@ -72,6 +84,12 @@ public class Helper {
         }
     }
 
+    /**
+     * Converts a LocalDateTime to file storage format.
+     *
+     * @param dateTime The LocalDateTime to convert.
+     * @return Formatted date-time string for file storage.
+     */
     public static String dateTimeToFileFormat(LocalDateTime dateTime) {
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
         return dateTime.format(dateTimeFormatter);

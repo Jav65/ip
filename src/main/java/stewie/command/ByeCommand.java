@@ -5,6 +5,9 @@ import stewie.storage.Storage;
 import stewie.task.TaskList;
 import stewie.ui.Ui;
 
+/**
+ * Represents a command to exit the application.
+ */
 public class ByeCommand implements Command {
 
     @Override

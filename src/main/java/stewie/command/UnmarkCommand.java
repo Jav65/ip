@@ -6,12 +6,21 @@ import stewie.storage.Storage;
 import stewie.task.TaskList;
 import stewie.util.Helper;
 
+/**
+ * Represents a command to unmark a task as done.
+ */
 public class UnmarkCommand implements Command {
     private final String args;
 
+    /**
+     * Creates a new unmark command with the given arguments.
+     *
+     * @param args The command arguments containing the task index to unmark.
+     */
     public UnmarkCommand(String args) {
         this.args = args;
     }
+
     /**
      * Handles the unmark command to mark a task as not done.
      */

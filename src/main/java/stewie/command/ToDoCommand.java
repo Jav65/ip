@@ -6,9 +6,17 @@ import stewie.storage.Storage;
 import stewie.task.TaskList;
 import stewie.task.ToDoTask;
 
+/**
+ * Represents a command to add a todo task.
+ */
 public class ToDoCommand implements Command {
     private final String args;
 
+    /**
+     * Creates a new todo command with the given arguments.
+     *
+     * @param args The command arguments containing task description.
+     */
     public ToDoCommand(String args) {
         this.args = args;
     }
