@@ -13,7 +13,7 @@ public class UnmarkCommand implements Command {
         this.args = args;
     }
     /**
-     * Handles the unmark stewie.command to mark a stewie.task as not done.
+     * Handles the unmark command to mark a task as not done.
      */
     @Override
     public String execute(TaskList taskList, Storage storage) throws CommandException {
@@ -22,7 +22,7 @@ public class UnmarkCommand implements Command {
         try {
             response = taskList.unmarkTask(idx);
         } catch (IndexOutOfBoundsException e) {
-            throw new OutOfRangeException("\t There's no stewie.task at index " + idx + ".");
+            throw new OutOfRangeException("\t There's no task at index " + idx + ".");
         }
         storage.saveTasks(taskList);
         return response;

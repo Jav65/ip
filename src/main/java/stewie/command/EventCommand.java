@@ -17,7 +17,7 @@ public class EventCommand implements Command {
     }
 
     /**
-     * Handles the event stewie.command to add a new event stewie.task.
+     * Handles the event command to add a new event task.
      */
     @Override
     public String execute(TaskList taskList, Storage storage) throws CommandException {

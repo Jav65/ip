@@ -17,7 +17,7 @@ public class DeadlineCommand implements Command {
     }
 
     /**
-     * Handles the deadline stewie.command to add a new deadline stewie.task.
+     * Handles the deadline command to add a new deadline task.
      */
     @Override
     public String execute(TaskList taskList, Storage storage) throws CommandException {

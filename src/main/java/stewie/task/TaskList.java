@@ -15,7 +15,7 @@ public class TaskList {
 
     public String addTask(Task task) {
         this.tasks.add(task);
-        return "\t I've scribbled down your little stewie.task:\n" +
+        return "\t I've scribbled down your little task:\n" +
                 "\t  " + task.getDescription() + "\n" +
                 "\t Now, do try to keep up, won't you?\n" +
                 "\t You have " + this.tasks.size() + " tasks left.\n";
@@ -24,7 +24,7 @@ public class TaskList {
     public String markTask(int i) {
         Task task = this.tasks.get(i - 1);
         task.markAsDone();
-        return "\t Behold! I've declared this paltry stewie.task complete.\n" +
+        return "\t Behold! I've declared this paltry task complete.\n" +
                 "\t  " + task.getDescription() + "\n" +
                 "\t Don't get cocky. You still have a long way to go.\n";
     }

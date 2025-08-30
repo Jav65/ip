@@ -12,8 +12,8 @@ import static stewie.ui.Ui.HR;
 import stewie.ui.Ui;
 
 /**
- * Main class for the stewie.Stewie chatbot.
- * Handles user input, stewie.command parsing, and stewie.task operations.
+ * Main class for the Stewie chatbot.
+ * Handles user input, command parsing, and task operations.
  */
 public class Stewie {
     private static final String DATA_FILE_PATH = "./data/tasks.txt";
