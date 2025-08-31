@@ -1,8 +1,8 @@
 package stewie.task;
 
-import stewie.util.Helper;
-
 import java.time.LocalDateTime;
+
+import stewie.util.Helper;
 
 /**
  * Represents a task that occurs during a specific time period.

@@ -1,10 +1,14 @@
 package stewie.task;
 
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.time.LocalDateTime;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
+/**
+ * Tests for DeadlineTask.
+ */
 public class DeadlineTaskTest {
     private final LocalDateTime testDateTime = LocalDateTime.of(2025, 8, 30, 15, 30);
 

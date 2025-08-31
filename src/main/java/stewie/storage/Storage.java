@@ -1,5 +1,12 @@
 package stewie.storage;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import stewie.task.DeadlineTask;
 import stewie.task.EventTask;
 import stewie.task.Task;
@@ -7,12 +14,6 @@ import stewie.task.TaskList;
 import stewie.task.ToDoTask;
 import stewie.util.Helper;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 /**
  * Handles saving and loading of tasks to and from a file.

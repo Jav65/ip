@@ -1,14 +1,14 @@
 package stewie;
 
+import static stewie.ui.Ui.HR;
+
 import java.util.Scanner;
 
 import stewie.command.Command;
 import stewie.exceptions.CommandException;
+import stewie.parser.Parser;
 import stewie.storage.Storage;
 import stewie.task.TaskList;
-import stewie.parser.Parser;
-
-import static stewie.ui.Ui.HR;
 import stewie.ui.Ui;
 
 /**
