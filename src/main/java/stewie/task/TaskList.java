@@ -92,10 +92,10 @@ public class TaskList {
      */
     public String deleteTask(int index) {
         Task task = this.tasks.remove(index - 1);
-        return "\t Poof! Begone with you, you insignificant little undertaking!\n" +
-                "\t  " + task.getDescription() + "\n" +
-                "\t Don't get cocky. You still have a long way to go.\n" +
-                "\t You have " + this.tasks.size() + " tasks left.\n";
+        return "\t Poof! Begone with you, you insignificant little undertaking!\n"
+               + "\t  " + task.getDescription() + "\n"
+               + "\t Don't get cocky. You still have a long way to go.\n"
+               + "\t You have " + this.tasks.size() + " tasks left.\n";
     }
 
     /**

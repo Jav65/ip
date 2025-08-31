@@ -1,20 +1,26 @@
 package stewie.command;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.any;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
+import java.time.LocalDateTime;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
+
 import stewie.exceptions.CommandException;
 import stewie.exceptions.InvalidCommandException;
 import stewie.storage.Storage;
 import stewie.task.EventTask;
 import stewie.task.TaskList;
 
-import java.time.LocalDateTime;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.Mockito.*;
-
+/**
+ * Tests for EventCommand.
+ */
 public class EventCommandTest {
 
     private TaskList taskList;
@@ -22,17 +28,24 @@ public class EventCommandTest {
 
     @BeforeEach
     public void setUp() {
-        taskList = mock(TaskList.class);
-        storage = mock(Storage.class);
+        taskList = org.mockito.Mockito.mock(TaskList.class);
+        storage = org.mockito.Mockito.mock(Storage.class);
     }
 
     @Test
     public void testExecute_success() throws CommandException {
-        EventTask dummyEventTask = new EventTask("Project meeting", LocalDateTime.of(2025,11,1,10,0), LocalDateTime.of(2025,11,1,12,0));
-        String expectedResponse = "\t I've scribbled down your little task:\n" +
-                "\t  " + dummyEventTask.getDescription() + "\n" +
-                "\t Now, do try to keep up, won't you?\n" +
-                "\t You have " + 1 + " tasks left.\n";
+        EventTask dummyEventTask = new EventTask(
+                "Project meeting",
+                LocalDateTime.of(2025, 11, 1, 10, 0),
+                LocalDateTime.of(2025, 11, 1, 12, 0)
+        );
+
+        String expectedResponse =
+                        "\t I've scribbled down your little task:\n"
+                        + "\t  " + dummyEventTask.getDescription() + "\n"
+                        + "\t Now, do try to keep up, won't you?\n"
+                        + "\t You have " + 1 + " tasks left.\n";
+
         when(taskList.addTask(any(EventTask.class))).thenReturn(expectedResponse);
 
         String args = "Project meeting /from 01/11/2025 10:00 /to 01/11/2025 12:00";
@@ -46,7 +59,10 @@ public class EventCommandTest {
         verify(taskList).addTask(taskCaptor.capture());
         EventTask addedTask = taskCaptor.getValue();
 
-        assertEquals("[E][ ] Project meeting (from: 01 Nov 2025 10:00 to: 01 Nov 2025 12:00)", addedTask.getDescription());
+        assertEquals(
+                "[E][ ] Project meeting (from: 01 Nov 2025 10:00 to: 01 Nov 2025 12:00)",
+                addedTask.getDescription()
+        );
 
         verify(storage).saveTasks(taskList);
     }

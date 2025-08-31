@@ -11,7 +11,7 @@ public class InvalidCommandException extends CommandException {
      * @param message The correct format message to display.
      */
     public InvalidCommandException(String message) {
-        super("\t I've provided the correct format for your simpleton mind.\n" +
-                "\t Follow it precisely: " + message);
+        super("\t I've provided the correct format for your simpleton mind.\n"
+                + "\t Follow it precisely: " + message);
     }
 }
