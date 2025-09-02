@@ -29,7 +29,7 @@ public class Parser {
      */
     public static Command parseCommand(String input) throws CommandException {
         if (input == null || input.isBlank()) {
-            throw new InvalidCommandException("Empty input!");
+            throw new InvalidCommandException("Type something!");
         }
 
         String[] cmdNArgs = input.trim().split("\\s+", 2);

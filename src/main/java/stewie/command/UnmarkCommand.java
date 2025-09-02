@@ -38,4 +38,9 @@ public class UnmarkCommand implements Command {
         storage.saveTasks(taskList);
         return response;
     }
+
+    @Override
+    public CommandType getCommandType() {
+        return CommandType.UNMARK;
+    }
 }

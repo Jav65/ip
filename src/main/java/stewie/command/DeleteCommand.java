@@ -36,4 +36,9 @@ public class DeleteCommand implements Command {
         storage.saveTasks(taskList);
         return response;
     }
+
+    @Override
+    public CommandType getCommandType() {
+        return CommandType.DELETE;
+    }
 }

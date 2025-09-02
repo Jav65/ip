@@ -27,4 +27,11 @@ public interface Command {
     default boolean isExit() {
         return false;
     }
+
+    /**
+     * Returns Command Type Enum
+     *
+     * @return Command Type
+     */
+    CommandType getCommandType();
 }

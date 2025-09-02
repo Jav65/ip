@@ -5,6 +5,7 @@ import static stewie.ui.Ui.HR;
 import java.util.Scanner;
 
 import stewie.command.Command;
+import stewie.command.CommandType;
 import stewie.exceptions.CommandException;
 import stewie.parser.Parser;
 import stewie.storage.Storage;
@@ -19,6 +20,8 @@ public class Stewie {
     private static final String DATA_FILE_PATH = "./data/tasks.txt";
     private static Storage storage = new Storage(DATA_FILE_PATH);
     private static TaskList taskList = storage.loadTaskList();
+
+    private CommandType commandType = CommandType.UNKNOWN;
 
     /**
      * Main method that starts the application and handles the main program loop.
@@ -51,7 +54,31 @@ public class Stewie {
                 System.out.print(HR);
             }
         }
+    }
 
-        Ui.showBye();
+    /**
+     * Processes the input string to determine the corresponding command and executes it.
+     *
+     * @param input The string input that represents a user command.
+     * @return The result of the command execution, or an error message if the command fails.
+     */
+    public String getResponse(String input) {
+        try {
+            Command command = Parser.parseCommand(input);
+            commandType = command.getCommandType();
+            return command.execute(taskList, storage);
+
+        } catch (CommandException e) {
+            return e.getMessage();
+        }
+    }
+
+    /**
+     * Returns the type of this command.
+     *
+     * @return the command type as a string
+     */
+    public CommandType getCommandType() {
+        return commandType;
     }
 }

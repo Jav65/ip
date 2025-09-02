@@ -13,4 +13,9 @@ public class ListCommand implements Command {
     public String execute(TaskList taskList, Storage storage) throws CommandException {
         return taskList.listTask();
     }
+
+    @Override
+    public CommandType getCommandType() {
+        return CommandType.LIST;
+    }
 }
