@@ -36,4 +36,9 @@ public class FindCommand implements Command {
 
         return taskList.findTaskByDescription(args);
     }
+
+    @Override
+    public CommandType getCommandType() {
+        return CommandType.FIND;
+    }
 }

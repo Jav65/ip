@@ -42,4 +42,9 @@ public class DeadlineCommand implements Command {
 
         return response;
     }
+
+    @Override
+    public CommandType getCommandType() {
+        return CommandType.DEADLINE;
+    }
 }

@@ -11,7 +11,7 @@ public class UnknownCommandException extends CommandException {
      * @param available The list of available commands.
      */
     public UnknownCommandException(String available) {
-        super("\t The available commands are listed for your feeble mind to comprehend: \n"
+        super(" The available commands are listed for your feeble mind to comprehend: \n"
                 + available);
     }
 }

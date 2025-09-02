@@ -46,4 +46,9 @@ public class EventCommand implements Command {
 
         return response;
     }
+
+    @Override
+    public CommandType getCommandType() {
+        return CommandType.EVENT;
+    }
 }

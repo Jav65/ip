@@ -5,6 +5,7 @@ import static stewie.ui.Ui.HR;
 import java.util.Scanner;
 
 import stewie.command.Command;
+import stewie.command.CommandType;
 import stewie.exceptions.CommandException;
 import stewie.parser.Parser;
 import stewie.storage.Storage;
@@ -20,13 +21,15 @@ public class Stewie {
     private static Storage storage = new Storage(DATA_FILE_PATH);
     private static TaskList taskList = storage.loadTaskList();
 
+    private CommandType commandType = CommandType.UNKNOWN;
+
     /**
      * Main method that starts the application and handles the main program loop.
      *
      * @param args Command line arguments (not used).
      */
     public static void main(String[] args) {
-        Ui.showGreeting();
+        System.out.print(Ui.showGreeting(true));
 
         Scanner scanner = new Scanner(System.in);
 
@@ -39,7 +42,7 @@ public class Stewie {
                 String response = command.execute(taskList, storage);
 
                 System.out.print(HR);
-                System.out.print(response);
+                System.out.println(Ui.formatPrintable(response));
                 System.out.print(HR);
 
                 if (command.isExit()) {
@@ -47,11 +50,35 @@ public class Stewie {
                 }
             } catch (CommandException e) {
                 System.out.print(HR);
-                System.out.println(e.getMessage());
+                System.out.println(Ui.formatPrintable(e.getMessage()));
                 System.out.print(HR);
             }
         }
+    }
 
-        Ui.showBye();
+    /**
+     * Processes the input string to determine the corresponding command and executes it.
+     *
+     * @param input The string input that represents a user command.
+     * @return The result of the command execution, or an error message if the command fails.
+     */
+    public String getResponse(String input) {
+        try {
+            Command command = Parser.parseCommand(input);
+            commandType = command.getCommandType();
+            return command.execute(taskList, storage);
+
+        } catch (CommandException e) {
+            return e.getMessage();
+        }
+    }
+
+    /**
+     * Returns the type of this command.
+     *
+     * @return the command type as a string
+     */
+    public CommandType getCommandType() {
+        return commandType;
     }
 }

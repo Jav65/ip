@@ -59,16 +59,29 @@ public class Ui {
     /**
      * Displays the greeting message when the app starts.
      */
-    public static void showGreeting() {
-        System.out.printf(HR + "\t Ah, a new face. Hullo! I'm Stewie!\n" + LOGO + HR
-                + "\t Don't just stand there, minion.\n"
-                + "\t State your purpose before I lose what's left of my patience.\n" + HR);
+    public static String showGreeting(boolean isCli) {
+        return isCli ? HR + "\t Ah, a new face. Hullo! I'm Stewie!\n" + LOGO + HR
+                        + "\t Don't just stand there, minion.\n"
+                        + "\t State your purpose before I lose what's left of my patience.\n" + HR
+                     : "Ah, a new face. Hullo! I'm Stewie!\n"
+                        + "Don't just stand there, minion.\n"
+                        + "State your purpose before I lose what's left of my patience.\n";
     }
 
     /**
      * Displays the goodbye message when the app exits.
      */
     public static String showBye() {
-        return "\t Finally, you're leaving. Do try not to get lost on the way out.\n";
+        return "Finally, you're leaving. Do try not to get lost on the way out.";
+    }
+
+    /**
+     * Formats the given string by prefixing each line with a tab and a space.
+     *
+     * @param input the original string, possibly containing multiple lines
+     * @return a new string with each line prefixed by "\t "
+     */
+    public static String formatPrintable(String input) {
+        return "\t " + input.replaceAll("\n", "\n\t ");
     }
 }

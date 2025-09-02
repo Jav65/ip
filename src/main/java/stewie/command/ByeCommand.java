@@ -19,4 +19,9 @@ public class ByeCommand implements Command {
     public boolean isExit() {
         return true;
     }
+
+    @Override
+    public CommandType getCommandType() {
+        return CommandType.BYE;
+    }
 }
