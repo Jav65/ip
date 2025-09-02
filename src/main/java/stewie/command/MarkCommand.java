@@ -26,12 +26,12 @@ public class MarkCommand implements Command {
      */
     @Override
     public String execute(TaskList taskList, Storage storage) throws CommandException {
-        int idx = Helper.parseIndexOrThrow(args, "mark <index>\n\t Expected an integer index!");
+        int idx = Helper.parseIndexOrThrow(args, "mark <index>\nExpected an integer index!");
         String response;
         try {
             response = taskList.markTask(idx);
         } catch (IndexOutOfBoundsException e) {
-            throw new OutOfRangeException("\t There's no task at index " + idx);
+            throw new OutOfRangeException("There's no task at index " + idx);
         }
         storage.saveTasks(taskList);
         return response;

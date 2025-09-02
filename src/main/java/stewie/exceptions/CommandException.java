@@ -11,7 +11,7 @@ public class CommandException extends Exception {
      * @param message The error message to display.
      */
     public CommandException(String message) {
-        super("\t What's this? You've uttered a complete and utter nonsense phrase.\n"
+        super("What's this? You've uttered a complete and utter nonsense phrase.\n"
                 + message);
     }
 }

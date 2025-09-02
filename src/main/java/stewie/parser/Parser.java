@@ -56,8 +56,8 @@ public class Parser {
         case BYE:
             return new ByeCommand();
         default:
-            throw new UnknownCommandException("\t\tlist, mark <i>, unmark <i>, todo <desc>, deadline <desc> /by <time>,"
-                    + "\n\t\tevent <desc> /from <start> /to <end>, delete <i>, bye");
+            throw new UnknownCommandException("\tlist, mark <i>, unmark <i>, todo <desc>, deadline <desc> /by <time>,"
+                    + "\n\tevent <desc> /from <start> /to <end>, delete <i>, bye");
         }
     }
 }

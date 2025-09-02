@@ -11,7 +11,7 @@ public class OutOfRangeException extends CommandException {
      * @param detail Additional details about the range violation.
      */
     public OutOfRangeException(String detail) {
-        super("\t The numbers you've provided are outside the acceptable parameters.\n"
+        super("The numbers you've provided are outside the acceptable parameters.\n"
                 + detail);
     }
 }

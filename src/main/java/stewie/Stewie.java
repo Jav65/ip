@@ -26,7 +26,7 @@ public class Stewie {
      * @param args Command line arguments (not used).
      */
     public static void main(String[] args) {
-        Ui.showGreeting();
+        System.out.print(Ui.showGreeting(true));
 
         Scanner scanner = new Scanner(System.in);
 
@@ -39,7 +39,7 @@ public class Stewie {
                 String response = command.execute(taskList, storage);
 
                 System.out.print(HR);
-                System.out.print(response);
+                System.out.println(Ui.formatPrintable(response));
                 System.out.print(HR);
 
                 if (command.isExit()) {
@@ -47,7 +47,7 @@ public class Stewie {
                 }
             } catch (CommandException e) {
                 System.out.print(HR);
-                System.out.println(e.getMessage());
+                System.out.println(Ui.formatPrintable(e.getMessage()));
                 System.out.print(HR);
             }
         }
