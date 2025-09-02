@@ -20,17 +20,26 @@ public class TaskList {
     }
 
     /**
-     * Adds a task to the task list.
+     * Adds one or more tasks to the task list.
+     * Returns appropriate feedback message based on the number of tasks added.
      *
-     * @param task The task to add.
-     * @return Confirmation message about the added task.
+     * @param tasks The task(s) to be added to the list. At least one task must be provided.
+     * @return A formatted response message indicating the task(s) have been added
      */
-    public String addTask(Task task) {
-        this.tasks.add(task);
-        return "I've scribbled down your little task:\n"
-                + " " + task.getDescription() + "\n"
-                + "Now, do try to keep up, won't you?\n"
-                + "You have " + this.tasks.size() + " tasks left.\n";
+    public String addTask(Task... tasks) {
+        for (Task task : tasks) {
+            this.tasks.add(task);
+        }
+
+        if (tasks.length == 1) {
+            return "I've scribbled down your little task:\n"
+                    + " " + tasks[0].getDescription() + "\n"
+                    + "Now, do try to keep up, won't you?\n"
+                    + "You have " + this.tasks.size() + " tasks left.\n";
+        } else {
+            return "I've added " + tasks.length + " tasks to your endless list.\n"
+                   + "You have " + this.tasks.size() + " tasks total.\n";
+        }
     }
 
     /**
