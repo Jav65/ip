@@ -7,6 +7,7 @@ import java.util.Arrays;
  * Manages a list of tasks with operations to add, remove, mark, and list tasks.
  */
 public class TaskList {
+    private static final int INDEX_OFFSET = 1;
     private ArrayList<Task> tasks;
 
     /**
@@ -48,7 +49,7 @@ public class TaskList {
      * @return Confirmation message about the marked task.
      */
     public String markTask(int index) {
-        Task task = this.tasks.get(index - 1);
+        Task task = this.tasks.get(index - INDEX_OFFSET);
         task.markAsDone();
         return "Behold! I've declared this paltry task complete.\n"
                 + " " + task.getDescription() + "\n"
@@ -62,7 +63,7 @@ public class TaskList {
      * @return Confirmation message about the unmarked task.
      */
     public String unmarkTask(int index) {
-        Task task = this.tasks.get(index - 1);
+        Task task = this.tasks.get(index - INDEX_OFFSET);
         task.unmark();
         return "You're toying with me! I've marked this back as incomplete.\n"
                 + " " + task.getDescription() + "\n"
@@ -99,7 +100,7 @@ public class TaskList {
      * @return Confirmation message about the deleted task.
      */
     public String deleteTask(int index) {
-        Task task = this.tasks.remove(index - 1);
+        Task task = this.tasks.remove(index - INDEX_OFFSET);
         return "Poof! Begone with you, you insignificant little undertaking!\n"
                + " " + task.getDescription() + "\n"
                + "Don't get cocky. You still have a long way to go.\n"
@@ -116,16 +117,21 @@ public class TaskList {
         StringBuilder sb = new StringBuilder();
         sb.append("Hmph! Here are the pathetic, insignificant plans that you requested.\n");
 
-        int index = 1;
+        int displayIndex = 1;
+        int matchCount = 0;
+
+        // Search and format matching tasks
         for (Task task : tasks) {
             if (task.getDescription().contains(description)) {
-                sb.append(" ").append(index).append(". ").append(task.getDescription()).append("\n");
-                index++;
+                sb.append(" ").append(displayIndex).append(". ").append(task.getDescription()).append("\n");
+                displayIndex++;
+                matchCount++;
             }
         }
-        sb.append(String.format("Found %d tasks in total.", index - 1));
+        sb.append(String.format("Found %d tasks in total.", matchCount));
 
-        if (index == 1) {
+        // Handle no matches case
+        if (matchCount == 0) {
             return "You've wasted my time. Absolutely nothing of consequence was found.";
         }
 

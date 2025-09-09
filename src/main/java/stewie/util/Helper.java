@@ -14,6 +14,21 @@ import stewie.exceptions.InvalidCommandException;
  * Utility class providing helper methods for parsing and validation.
  */
 public class Helper {
+    private static final String DATE_TIME_PATTERN = "dd/MM/yyyy HH:mm";
+    private static final String DATE_ONLY_PATTERN = "dd/MM/yyyy";
+    private static final String DISPLAY_DATE_TIME_PATTERN = "dd MMM yyyy HH:mm";
+    private static final String DISPLAY_DATE_ONLY_PATTERN = "dd MMM yyyy";
+    private static final DateTimeFormatter INPUT_DATE_TIME_FORMATTER =
+            DateTimeFormatter.ofPattern(DATE_TIME_PATTERN);
+    private static final DateTimeFormatter INPUT_DATE_FORMATTER =
+            DateTimeFormatter.ofPattern(DATE_ONLY_PATTERN);
+    private static final DateTimeFormatter DISPLAY_DATE_TIME_FORMATTER =
+            DateTimeFormatter.ofPattern(DISPLAY_DATE_TIME_PATTERN, Locale.ENGLISH);
+    private static final DateTimeFormatter DISPLAY_DATE_FORMATTER =
+            DateTimeFormatter.ofPattern(DISPLAY_DATE_ONLY_PATTERN, Locale.ENGLISH);
+    private static final DateTimeFormatter FILE_FORMATTER =
+            DateTimeFormatter.ofPattern(DATE_TIME_PATTERN);
+    private static final LocalTime MIDNIGHT = LocalTime.MIDNIGHT;
 
     /**
      * Parses a string argument to an integer index.
@@ -56,18 +71,12 @@ public class Helper {
      * @return LocalDateTime object if parsing succeeds, null otherwise.
      */
     public static LocalDateTime parseDateTime(String dateTimeString) {
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
-        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-
-        try {
-            return LocalDateTime.parse(dateTimeString, dateTimeFormatter);
-        } catch (DateTimeParseException e) {
-            try {
-                return LocalDate.parse(dateTimeString, dateFormatter).atStartOfDay();
-            } catch (DateTimeParseException e2) {
-                return null;
-            }
+        LocalDateTime dateTime = tryParseDateTime(dateTimeString);
+        if (dateTime != null) {
+            return dateTime;
         }
+
+        return tryParseDateOnly(dateTimeString);
     }
 
     /**
@@ -77,13 +86,10 @@ public class Helper {
      * @return Formatted date-time string for display.
      */
     public static String dateTimeToString(LocalDateTime dateTime) {
-        DateTimeFormatter fullFormatter = DateTimeFormatter.ofPattern("dd MMM yyyy HH:mm", Locale.ENGLISH);
-        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd MMM yyyy", Locale.ENGLISH);
-
-        if (dateTime.toLocalTime().equals(LocalTime.MIDNIGHT)) {
-            return dateTime.format(dateFormatter);
+        if (isStartOfDay(dateTime)) {
+            return formatDateOnly(dateTime);
         } else {
-            return dateTime.format(fullFormatter);
+            return formatDateTime(dateTime);
         }
     }
 
@@ -94,7 +100,34 @@ public class Helper {
      * @return Formatted date-time string for file storage.
      */
     public static String dateTimeToFileFormat(LocalDateTime dateTime) {
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
-        return dateTime.format(dateTimeFormatter);
+        return dateTime.format(FILE_FORMATTER);
+    }
+
+    private static LocalDateTime tryParseDateTime(String dateTimeString) {
+        try {
+            return LocalDateTime.parse(dateTimeString, INPUT_DATE_TIME_FORMATTER);
+        } catch (DateTimeParseException e) {
+            return null;
+        }
+    }
+
+    private static LocalDateTime tryParseDateOnly(String dateTimeString) {
+        try {
+            return LocalDate.parse(dateTimeString, INPUT_DATE_FORMATTER).atStartOfDay();
+        } catch (DateTimeParseException e) {
+            return null;
+        }
+    }
+
+    private static boolean isStartOfDay(LocalDateTime dateTime) {
+        return dateTime.toLocalTime().equals(MIDNIGHT);
+    }
+
+    private static String formatDateOnly(LocalDateTime dateTime) {
+        return dateTime.format(DISPLAY_DATE_FORMATTER);
+    }
+
+    private static String formatDateTime(LocalDateTime dateTime) {
+        return dateTime.format(DISPLAY_DATE_TIME_FORMATTER);
     }
 }
