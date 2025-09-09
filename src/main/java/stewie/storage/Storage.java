@@ -27,6 +27,8 @@ public class Storage {
      * @param filePath The path to the file where tasks will be stored.
      */
     public Storage(String filePath) {
+        assert filePath != null : "File path cannot be null";
+        assert !filePath.trim().isEmpty() : "File path cannot be empty";
         this.filePath = Paths.get(filePath);
     }
 
@@ -140,6 +142,8 @@ public class Storage {
         if (isDone) {
             task.markAsDone();
         }
+
+        assert task.getIsDone() == isDone : "Task done status should match parsed value";
 
         return task;
     }
