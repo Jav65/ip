@@ -71,6 +71,7 @@ public class Helper {
      * @return LocalDateTime object if parsing succeeds, null otherwise.
      */
     public static LocalDateTime parseDateTime(String dateTimeString) {
+        assert dateTimeString != null : "Date Time should not be null";
         LocalDateTime dateTime = tryParseDateTime(dateTimeString);
         if (dateTime != null) {
             return dateTime;
@@ -86,6 +87,7 @@ public class Helper {
      * @return Formatted date-time string for display.
      */
     public static String dateTimeToString(LocalDateTime dateTime) {
+        assert dateTime != null : "Date Time should not be null";
         if (isStartOfDay(dateTime)) {
             return formatDateOnly(dateTime);
         } else {
@@ -100,6 +102,7 @@ public class Helper {
      * @return Formatted date-time string for file storage.
      */
     public static String dateTimeToFileFormat(LocalDateTime dateTime) {
+        assert dateTime != null : "Date Time should not be null";
         return dateTime.format(FILE_FORMATTER);
     }
 

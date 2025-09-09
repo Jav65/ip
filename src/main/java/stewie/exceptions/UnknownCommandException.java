@@ -8,10 +8,11 @@ public class UnknownCommandException extends CommandException {
     /**
      * Creates a new UnknownCommandException with the list of available commands.
      *
-     * @param available The list of available commands.
+     * @param message The list of available commands.
      */
-    public UnknownCommandException(String available) {
+    public UnknownCommandException(String message) {
         super(" The available commands are listed for your feeble mind to comprehend: \n"
-                + available);
+                + message);
+        assert message != null : "Exception message cannot be null";
     }
 }

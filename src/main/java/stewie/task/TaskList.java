@@ -29,6 +29,8 @@ public class TaskList {
      * @return A formatted response message indicating the task(s) have been added
      */
     public String addTask(Task... tasks) {
+        assert tasks != null : "Tasks array cannot be null";
+        assert tasks.length > 0 : "At least one task must be provided";
         this.tasks.addAll(Arrays.asList(tasks));
 
         if (tasks.length == 1) {
@@ -49,6 +51,8 @@ public class TaskList {
      * @return Confirmation message about the marked task.
      */
     public String markTask(int index) {
+        assert index > 0 : "Index must be positive (1-based indexing)";
+        assert index <= this.tasks.size() : "Index must not exceed task list size";
         Task task = this.tasks.get(index - INDEX_OFFSET);
         task.markAsDone();
         return "Behold! I've declared this paltry task complete.\n"
@@ -63,6 +67,8 @@ public class TaskList {
      * @return Confirmation message about the unmarked task.
      */
     public String unmarkTask(int index) {
+        assert index > 0 : "Index must be positive (1-based indexing)";
+        assert index <= this.tasks.size() : "Index must not exceed task list size";
         Task task = this.tasks.get(index - INDEX_OFFSET);
         task.unmark();
         return "You're toying with me! I've marked this back as incomplete.\n"
@@ -100,6 +106,8 @@ public class TaskList {
      * @return Confirmation message about the deleted task.
      */
     public String deleteTask(int index) {
+        assert index > 0 : "Index must be positive (1-based indexing)";
+        assert index <= this.tasks.size() : "Index must not exceed task list size";
         Task task = this.tasks.remove(index - INDEX_OFFSET);
         return "Poof! Begone with you, you insignificant little undertaking!\n"
                + " " + task.getDescription() + "\n"
