@@ -2,6 +2,9 @@ package stewie.task;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  * Manages a list of tasks with operations to add, remove, mark, and list tasks.
@@ -86,17 +89,16 @@ public class TaskList {
             return "No tasks? How utterly dreadful!\n";
         }
 
-        StringBuilder sb = new StringBuilder();
-        sb.append("These, my dear simpleton, are the items on your agenda.\n");
+        String taskList = IntStream.range(0, this.tasks.size())
+                .mapToObj(i -> String.format(" %d. %s",
+                        i + 1,
+                        tasks.get(i).getDescription()))
+                .collect(Collectors.joining("\n"));
 
-        int index = 1;
-        for (Task task : tasks) {
-            sb.append(" ").append(index).append(". ").append(task.getDescription()).append("\n");
-            index++;
-        }
-        sb.append("Failure is not an option.");
-
-        return sb.toString();
+        return "These, my dear simpleton, are the items on your agenda.\n"
+                + taskList + "\n"
+                + "Failure is not an option."
+                + "You have " + this.tasks.size() + " tasks left";
     }
 
     /**
@@ -122,27 +124,25 @@ public class TaskList {
      * @return A formatted string containing all matching tasks, or a message if no matches found.
      */
     public String findTaskByDescription(String description) {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Hmph! Here are the pathetic, insignificant plans that you requested.\n");
+        List<Task> matchingTasks = this.tasks.stream()
+                .filter(task -> task.getDescription().contains(description))
+                .collect(Collectors.toList());
 
-        int displayIndex = 1;
-        int matchCount = 0;
-
-        // Search and format matching tasks
-        for (Task task : tasks) {
-            if (task.getDescription().contains(description)) {
-                sb.append(" ").append(displayIndex).append(". ").append(task.getDescription()).append("\n");
-                displayIndex++;
-                matchCount++;
-            }
-        }
-        sb.append(String.format("Found %d tasks in total.", matchCount));
-
-        // Handle no matches case
-        if (matchCount == 0) {
+        if (matchingTasks.isEmpty()) {
             return "You've wasted my time. Absolutely nothing of consequence was found.";
         }
 
+        StringBuilder sb = new StringBuilder();
+        sb.append("Hmph! Here are the pathetic, insignificant plans that you requested.\n");
+
+        IntStream.range(0, matchingTasks.size())
+                .forEach(i -> sb.append(" ")
+                        .append(i + 1)
+                        .append(". ")
+                        .append(matchingTasks.get(i).getDescription())
+                        .append("\n"));
+
+        sb.append(String.format("Found %d tasks in total.", matchingTasks.size()));
         return sb.toString();
     }
 
