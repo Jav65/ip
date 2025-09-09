@@ -13,5 +13,6 @@ public class InvalidCommandException extends CommandException {
     public InvalidCommandException(String message) {
         super("I've provided the correct format for your simpleton mind.\n"
                 + "Follow it precisely: " + message);
+        assert message != null : "Exception message cannot be null";
     }
 }

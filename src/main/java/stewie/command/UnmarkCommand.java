@@ -26,6 +26,8 @@ public class UnmarkCommand implements Command {
      */
     @Override
     public String execute(TaskList taskList, Storage storage) throws CommandException {
+        assert taskList != null : "TaskList cannot be null";
+        assert storage != null : "Storage cannot be null";
         int idx = Helper.parseIndexOrThrow(args, "unmark <index>\n Expected an integer index!");
         String response;
 
@@ -36,6 +38,7 @@ public class UnmarkCommand implements Command {
         }
 
         storage.saveTasks(taskList);
+        assert response != null : "Final response should not be null";
         return response;
     }
 

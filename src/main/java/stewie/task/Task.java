@@ -50,4 +50,13 @@ public abstract class Task {
     public String getDescription() {
         return ((this.isDone) ? "[X] " : "[ ] ") + this.description;
     }
+
+    /**
+     * Returns if the task is marked.
+     *
+     * @return boolean of whether the task is done
+     */
+    public boolean getIsDone() {
+        return this.isDone;
+    }
 }
