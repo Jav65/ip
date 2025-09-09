@@ -1,0 +1,90 @@
+[33mcfd58ff[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mbranch-A-CodeQuality[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/branch-A-CodeQuality[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m Merge pull request #1 from Jav65/branch-A-Assertion
+[33mb6732cb[m[33m ([m[1;31morigin/branch-A-Assertion[m[33m)[m Merge branch 'master' into branch-A-Assertion
+[33m1a73139[m[33m ([m[1;32mbranch-A-Assertion[m[33m)[m Add assertions for input validation and error detection
+[33mb5051b6[m fix: fix Stewie's response formatting
+[33m4f31837[m refactor: add assertion for input validation and error detection
+[33m71a8c0f[m[33m ([m[1;32mbranch-A-Streams[m[33m)[m fix: fix Stewie's response formatting
+[33mbf64b94[m[33m ([m[1;33mtag: [m[1;33mv1.0.0[m[33m, [m[1;33mtag: [m[1;33mA-Varargs[m[33m)[m Merge branch-A-Varargs
+[33m57715c9[m[33m ([m[1;31morigin/branch-A-Varargs[m[33m, [m[1;32mbranch-A-Varargs[m[33m)[m refactor: use varargs in addTask method
+[33m230374c[m[33m ([m[1;33mtag: [m[1;33mLevel-10[m[33m)[m Merge branch-Level-10
+[33m3e95802[m[33m ([m[1;31morigin/branch-Level-10[m[33m, [m[1;32mbranch-Level-10[m[33m)[m feat: Add GUI for Stewie bot
+[33m5d1adf3[m refactor: implement formatPrintable function for CLI
+[33m3195e7f[m[33m ([m[1;33mtag: [m[1;33mA-CheckStyle[m[33m)[m Merge branch-A-CheckStyle
+[33m5359036[m[33m ([m[1;31morigin/branch-A-CheckStyle[m[33m, [m[1;32mbranch-A-CheckStyle[m[33m)[m chore: fix Checkstyle violations
+[33m59a3d8c[m chore: add Checkstyle config and suppressions
+[33md3df67f[m[33m ([m[1;33mtag: [m[1;33mLevel-9[m[33m)[m Merge branch-Level-9
+[33md810dc4[m[33m ([m[1;33mtag: [m[1;33mA-CodingStandard[m[33m)[m Merge branch-A-CodingStandard
+[33m5d64857[m[33m ([m[1;33mtag: [m[1;33mA-JavaDoc[m[33m)[m Merge branch-A-Javadoc
+[33m659f4d7[m[33m ([m[1;31morigin/branch-Level-9[m[33m, [m[1;32mbranch-Level-9[m[33m)[m feat: add find command
+[33m04e47b9[m[33m ([m[1;31morigin/branch-A-CodingStandard[m[33m, [m[1;32mbranch-A-CodingStandard[m[33m)[m style: fix Java coding standard violations
+[33md5216e2[m[33m ([m[1;31morigin/branch-A-Javadoc[m[33m, [m[1;32mbranch-A-Javadoc[m[33m)[m docs: add Javadoc comments to classes and public methods
+[33m98324df[m[33m ([m[1;33mtag: [m[1;33mA-Jar[m[33m, [m[1;31morigin/branch-A-jar[m[33m, [m[1;32mbranch-A-jar[m[33m)[m fix: change stewie logo to support jdk 17 for gradle
+[33mbb709e5[m[33m ([m[1;33mtag: [m[1;33mA-JUnit[m[33m)[m Merge branch 'branch-A-JUnit'
+[33m49d5f61[m[33m ([m[1;31morigin/branch-A-JUnit[m[33m, [m[1;32mbranch-A-JUnit[m[33m)[m test: change dir path for runtest
+[33m7ddb918[m test: add JUnit Test
+[33m698e6ea[m refactor: fix comment stewie.x to x
+[33mb3fa08a[m[33m ([m[1;33mtag: [m[1;33mA-Gradle[m[33m)[m Merge branch 'add-gradle-support'
+[33me005846[m[33m ([m[1;33mtag: [m[1;33mA-Packages[m[33m)[m Merge branch 'branch-A-Packages'
+[33mf4d1229[m[33m ([m[1;31morigin/branch-A-Packages[m[33m, [m[1;32mbranch-A-Packages[m[33m)[m refactor: organize everything into stewie package
+[33mdbd0406[m[33m ([m[1;33mtag: [m[1;33mA-MoreOOP[m[33m)[m Merge branch 'branch-A-MoreOOP'
+[33m6136f09[m[33m ([m[1;31morigin/branch-A-MoreOOP[m[33m, [m[1;32mbranch-A-MoreOOP[m[33m)[m refactor: implement ui, storage, parser, commands classes
+[33mba6b1a3[m[33m ([m[1;33mtag: [m[1;33mLevel-8[m[33m)[m Merge branch 'branch-Level-8'
+[33mdda80a5[m[33m ([m[1;31morigin/branch-Level-8[m[33m, [m[1;32mbranch-Level-8[m[33m)[m feat: add dates and times functionality to tasks
+[33m5c42a58[m[33m ([m[1;33mtag: [m[1;33mLevel-7[m[33m)[m Merge branch 'branch-Level-7'
+[33m85ef0e5[m[33m ([m[1;31morigin/branch-Level-7[m[33m, [m[1;32mbranch-Level-7[m[33m)[m feat: add auto-load and auto-save task list
+[33mac7b6fe[m refactor: apply Java coding standard formatting
+[33m56e2a37[m refactor: apply Java coding standard formatting
+[33m76d26f5[m[33m ([m[1;33mtag: [m[1;33mA-Enums[m[33m)[m test: add test case for delete
+[33m8fdc5fb[m refactor: change commandType to enum
+[33m2fe71eb[m[33m ([m[1;33mtag: [m[1;33mLevel-6[m[33m, [m[1;33mtag: [m[1;33mA-Collections[m[33m)[m feat: add delete command
+[33m2dbfe27[m[33m ([m[1;33mtag: [m[1;33mLevel-5[m[33m, [m[1;33mtag: [m[1;33mA-Exceptions[m[33m)[m feat: handle command errors
+[33m3dd0dc9[m[33m ([m[1;33mtag: [m[1;33mA-TextUiTesting[m[33m)[m fix: add input and expected file for text UI testing
+[33m4326ec9[m[33m ([m[1;33mtag: [m[1;33mLevel-4[m[33m, [m[1;33mtag: [m[1;33mA-Inherintance[m[33m)[m feat: add todo, event, deadline commands
+[33mbb3ac3c[m[33m ([m[1;33mtag: [m[1;33mLevel-3[m[33m, [m[1;33mtag: [m[1;33mA-Classes[m[33m)[m fix: mark and unmark index - 1
+[33mbeb4301[m feat: add mark and unmark command
+[33mceaf0c5[m[33m ([m[1;33mtag: [m[1;33mLevel-2[m[33m)[m feat: add task and list commands
+[33m2e14b9e[m refactor: add parse_command method
+[33m16ef9c5[m[33m ([m[1;33mtag: [m[1;33mLevel-1[m[33m)[m feat: add echo command loop
+[33m02f53e6[m[33m ([m[1;33mtag: [m[1;33mLevel-0[m[33m)[m refactor: extract logo and messages into constants and methods
+[33m4acdb21[m feat: introduce Stewie chatbot with greetings
+[33m33ea780[m README: Use correct item number in list
+[33mad9696c[m README: Ask to keep source folder structure
+[33m81a9c53[m[33m ([m[1;31morigin/add-gradle-support[m[33m, [m[1;32madd-gradle-support[m[33m)[m build.gradle: Prevent generating a second JAR file
+[33m03523ec[m Bump gradle and lib version
+[33m68c58c1[m Add Gradle support
+[33m173d5b3[m README: Update the JDK version 11 -> 17
+[33m55f9f9f[m docs/README.md: Tweak document template
+[33m3b83789[m .gitignore: Fix ACTUAL.txt -> ACTUAL.TXT  (#73)
+[33me698798[m README: Mention the project language level setting
+[33m7bfb6e7[m README.md: Tweak template text
+[33meabcfca[m README: Update setup instructions to match the latest IDE version
+[33m6001e2e[m Improve runtest.* scripts
+[33m87eb8b8[m README.md: Fix typo of => or
+[33mef3c8cd[m Add text-ui-test files
+[33m71d7ea8[m Remove generic tutorials
+[33m1416279[m Merge pull request #41 from jiachen247/patch-2
+[33m2697ae1[m Remove unnecessary override annotation
+[33m6f2ddfa[m Merge pull request #35 from j-lum/xplatformjfx
+[33m2ca6b28[m JavaFX tutorial: Support cross-platform JARs
+[33mfae28ab[m Merge pull request #14 from j-lum/fxml-indent
+[33m26a5013[m Change indentation in FXML samples to match AB-3
+[33mbaa18a5[m Merge pull request #8 from j-lum/tutorial-fix
+[33m5df56a8[m Remove references to DukeStub
+[33m999fa98[m Merge pull request #7 from j-lum/tutorial-fix
+[33m8d6d6f4[m Add images to JavaFX tutorial 3
+[33mb6df1a3[m Fix typo referring to `HelloWorld`
+[33md2ffa00[m Update Gradle tutorial to reflect new checkstyle config
+[33mf20d610[m Merge pull request #3 from j-lum/inline-javafx-tutorials
+[33mbad66fc[m Adapt JavaFX tutorial for Duke
+[33m5c47c23[m Specify checkstyle version
+[33ma2150c1[m textUiTestingTutorial.md: mention updating java/javac commands
+[33m2d06f90[m textUiTestingTutorial.md: add missing <br>
+[33m5c491d3[m Add a tutorial on text UI testing
+[33m53c0460[m Update list of contributors
+[33m21af6a1[m Fix typo in link to checkstyle config files
+[33m8fe8afd[m README: use numbered list for steps
+[33mf20bff2[m Tweak tutorial text
+[33m6a7120c[m Move Duke.java out of the package
+[33m6bb6b9f[m .gitignore: add *.iml
+[33m946f3bb[m Import base branch for students to start off
+[33m245013d[m Initial commit

@@ -19,6 +19,9 @@ import stewie.util.Helper;
  * Handles saving and loading of tasks to and from a file.
  */
 public class Storage {
+    private static final String TODO_TYPE = "T";
+    private static final String DEADLINE_TYPE = "D";
+    private static final String EVENT_TYPE = "E";
     private final Path filePath;
 
     /**
@@ -120,16 +123,16 @@ public class Storage {
 
         Task task;
         switch (type) {
-        case "T":
+        case TODO_TYPE:
             task = new ToDoTask(description);
             break;
-        case "D":
+        case DEADLINE_TYPE:
             if (parts.length < 4) {
                 throw new IllegalArgumentException("Missing deadline");
             }
             task = new DeadlineTask(description, Helper.parseDateTime(parts[3]));
             break;
-        case "E":
+        case EVENT_TYPE:
             if (parts.length < 5) {
                 throw new IllegalArgumentException("Missing event time");
             }

@@ -26,13 +26,17 @@ public class EventTask extends Task {
 
     @Override
     public String toFileFormat() {
-        return "E | " + super.toFileFormat() + " | " + Helper.dateTimeToFileFormat(startTime)
-                + " | " + Helper.dateTimeToFileFormat(endTime);
+        String formattedStartTime = Helper.dateTimeToFileFormat(startTime);
+        String formattedEndTime = Helper.dateTimeToFileFormat(endTime);
+        return "E | " + super.toFileFormat() + " | " + formattedStartTime
+                + " | " + formattedEndTime;
     }
 
     @Override
     public String getDescription() {
-        return "[E]" + super.getDescription() + " (from: " + Helper.dateTimeToString(startTime)
-                + " to: " + Helper.dateTimeToString(endTime) + ")";
+        String formattedStartTime = Helper.dateTimeToString(startTime);
+        String formattedEndTime = Helper.dateTimeToString(endTime);
+        return "[E]" + super.getDescription() + " (from: " + formattedStartTime
+                + " to: " + formattedEndTime + ")";
     }
 }
