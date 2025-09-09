@@ -13,6 +13,7 @@ import stewie.util.Helper;
  * Represents a command to add a deadline task.
  */
 public class DeadlineCommand implements Command {
+    private static final String USAGE_MESSAGE = "deadline <description> /by <dd/MM/yyyy> <HH:mm>";
     private final String args;
 
     /**
@@ -33,11 +34,11 @@ public class DeadlineCommand implements Command {
         assert storage != null : "Storage cannot be null";
         String[] parts = args.split("\\s+/by\\s+", 2);
         if (parts.length < 2 || parts[0].isBlank() || parts[1].isBlank()) {
-            throw new InvalidCommandException("deadline <description> /by <dd/MM/yyyy> <HH:mm>");
+            throw new InvalidCommandException(USAGE_MESSAGE);
         }
         LocalDateTime deadline = Helper.parseDateTime(parts[1].trim());
         if (deadline == null) {
-            throw new InvalidCommandException("deadline <description> /by <dd/MM/yyyy> <HH:mm>");
+            throw new InvalidCommandException(USAGE_MESSAGE);
         }
         String response = taskList.addTask(new DeadlineTask(parts[0].trim(), deadline));
         storage.saveTasks(taskList);

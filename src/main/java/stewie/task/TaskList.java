@@ -10,6 +10,7 @@ import java.util.stream.IntStream;
  * Manages a list of tasks with operations to add, remove, mark, and list tasks.
  */
 public class TaskList {
+    private static final int INDEX_OFFSET = 1;
     private ArrayList<Task> tasks;
 
     /**
@@ -55,7 +56,7 @@ public class TaskList {
     public String markTask(int index) {
         assert index > 0 : "Index must be positive (1-based indexing)";
         assert index <= this.tasks.size() : "Index must not exceed task list size";
-        Task task = this.tasks.get(index - 1);
+        Task task = this.tasks.get(index - INDEX_OFFSET);
         task.markAsDone();
         return "Behold! I've declared this paltry task complete.\n"
                 + " " + task.getDescription() + "\n"
@@ -71,7 +72,7 @@ public class TaskList {
     public String unmarkTask(int index) {
         assert index > 0 : "Index must be positive (1-based indexing)";
         assert index <= this.tasks.size() : "Index must not exceed task list size";
-        Task task = this.tasks.get(index - 1);
+        Task task = this.tasks.get(index - INDEX_OFFSET);
         task.unmark();
         return "You're toying with me! I've marked this back as incomplete.\n"
                 + " " + task.getDescription() + "\n"
@@ -109,7 +110,7 @@ public class TaskList {
     public String deleteTask(int index) {
         assert index > 0 : "Index must be positive (1-based indexing)";
         assert index <= this.tasks.size() : "Index must not exceed task list size";
-        Task task = this.tasks.remove(index - 1);
+        Task task = this.tasks.remove(index - INDEX_OFFSET);
         return "Poof! Begone with you, you insignificant little undertaking!\n"
                + " " + task.getDescription() + "\n"
                + "Don't get cocky. You still have a long way to go.\n"

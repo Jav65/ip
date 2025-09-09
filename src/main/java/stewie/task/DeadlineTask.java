@@ -23,11 +23,13 @@ public class DeadlineTask extends Task {
 
     @Override
     public String toFileFormat() {
-        return "D | " + super.toFileFormat() + " | " + Helper.dateTimeToFileFormat(deadline);
+        String formattedDeadline = Helper.dateTimeToFileFormat(deadline);
+        return "D | " + super.toFileFormat() + " | " + formattedDeadline;
     }
 
     @Override
     public String getDescription() {
-        return "[D]" + super.getDescription() + " (by: " + Helper.dateTimeToString(deadline) + ")";
+        String formattedDeadline = Helper.dateTimeToString(deadline);
+        return "[D]" + super.getDescription() + " (by: " + formattedDeadline + ")";
     }
 }

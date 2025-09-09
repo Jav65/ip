@@ -13,6 +13,8 @@ import stewie.util.Helper;
  * Represents a command to add a event task.
  */
 public class EventCommand implements Command {
+    private static final String USAGE_MESSAGE = "event <description> /from <dd/MM/yyyy> <HH:mm> "
+                                                + "/to <dd/MM/yyyy> <HH:mm>";
     private final String args;
 
     /**
@@ -33,14 +35,12 @@ public class EventCommand implements Command {
         assert storage != null : "Storage cannot be null";
         String[] parts = args.split("\\s+/from\\s+|\\s+/to\\s+");
         if (parts.length < 3 || parts[0].isBlank() || parts[1].isBlank() || parts[2].isBlank()) {
-            throw new InvalidCommandException("event <description> /from <dd/MM/yyyy> <HH:mm> "
-                                                + "/to <dd/MM/yyyy> <HH:mm>");
+            throw new InvalidCommandException(USAGE_MESSAGE);
         }
         LocalDateTime startTime = Helper.parseDateTime(parts[1].trim());
         LocalDateTime endTime = Helper.parseDateTime(parts[2].trim());
         if (startTime == null || endTime == null) {
-            throw new InvalidCommandException("event <description> /from <dd/MM/yyyy> <HH:mm> "
-                                                + "/to <dd/MM/yyyy> <HH:mm>");
+            throw new InvalidCommandException(USAGE_MESSAGE);
         }
 
         String response = taskList.addTask(new EventTask(parts[0].trim(), startTime, endTime));
