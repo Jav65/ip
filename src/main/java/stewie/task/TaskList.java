@@ -1,6 +1,7 @@
 package stewie.task;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Manages a list of tasks with operations to add, remove, mark, and list tasks.
@@ -27,18 +28,16 @@ public class TaskList {
      * @return A formatted response message indicating the task(s) have been added
      */
     public String addTask(Task... tasks) {
-        for (Task task : tasks) {
-            this.tasks.add(task);
-        }
+        this.tasks.addAll(Arrays.asList(tasks));
 
         if (tasks.length == 1) {
             return "I've scribbled down your little task:\n"
                     + " " + tasks[0].getDescription() + "\n"
                     + "Now, do try to keep up, won't you?\n"
-                    + "You have " + this.tasks.size() + " tasks left.\n";
+                    + "You have " + this.tasks.size() + " tasks left";
         } else {
             return "I've added " + tasks.length + " tasks to your endless list.\n"
-                   + "You have " + this.tasks.size() + " tasks total.\n";
+                   + "You have " + this.tasks.size() + " tasks in total.";
         }
     }
 
@@ -53,7 +52,7 @@ public class TaskList {
         task.markAsDone();
         return "Behold! I've declared this paltry task complete.\n"
                 + " " + task.getDescription() + "\n"
-                + "Don't get cocky. You still have a long way to go.\n";
+                + "Don't get cocky. You still have a long way to go.";
     }
 
     /**
@@ -67,7 +66,7 @@ public class TaskList {
         task.unmark();
         return "You're toying with me! I've marked this back as incomplete.\n"
                 + " " + task.getDescription() + "\n"
-                + "Don't think for a second I'll forget this betrayal.\n";
+                + "Don't think for a second I'll forget this betrayal.";
     }
 
     /**
@@ -88,7 +87,7 @@ public class TaskList {
             sb.append(" ").append(index).append(". ").append(task.getDescription()).append("\n");
             index++;
         }
-        sb.append("Failure is not an option.\n");
+        sb.append("Failure is not an option.");
 
         return sb.toString();
     }
@@ -104,7 +103,7 @@ public class TaskList {
         return "Poof! Begone with you, you insignificant little undertaking!\n"
                + " " + task.getDescription() + "\n"
                + "Don't get cocky. You still have a long way to go.\n"
-               + "You have " + this.tasks.size() + " tasks left.\n";
+               + "You have " + this.tasks.size() + " tasks left.";
     }
 
     /**
@@ -124,9 +123,10 @@ public class TaskList {
                 index++;
             }
         }
+        sb.append(String.format("Found %d tasks in total.", index - 1));
 
         if (index == 1) {
-            return "You've wasted my time. Absolutely nothing of consequence was found.\n";
+            return "You've wasted my time. Absolutely nothing of consequence was found.";
         }
 
         return sb.toString();
