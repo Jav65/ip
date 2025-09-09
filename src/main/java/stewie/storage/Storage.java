@@ -36,6 +36,7 @@ public class Storage {
      * @param taskList The task list to save.
      */
     public void saveTasks(TaskList taskList) {
+        assert taskList != null : "TaskList should not be null";
         try {
             Files.createDirectories(filePath.getParent());
 

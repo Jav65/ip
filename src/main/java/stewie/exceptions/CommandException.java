@@ -13,5 +13,6 @@ public class CommandException extends Exception {
     public CommandException(String message) {
         super("What's this? You've uttered a complete and utter nonsense phrase.\n"
                 + message);
+        assert message != null : "Exception message cannot be null";
     }
 }

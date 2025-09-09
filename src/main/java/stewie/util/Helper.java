@@ -56,6 +56,7 @@ public class Helper {
      * @return LocalDateTime object if parsing succeeds, null otherwise.
      */
     public static LocalDateTime parseDateTime(String dateTimeString) {
+        assert dateTimeString != null : "Date Time should not be null";
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
@@ -77,6 +78,7 @@ public class Helper {
      * @return Formatted date-time string for display.
      */
     public static String dateTimeToString(LocalDateTime dateTime) {
+        assert dateTime != null : "Date Time should not be null";
         DateTimeFormatter fullFormatter = DateTimeFormatter.ofPattern("dd MMM yyyy HH:mm", Locale.ENGLISH);
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd MMM yyyy", Locale.ENGLISH);
 
@@ -94,6 +96,7 @@ public class Helper {
      * @return Formatted date-time string for file storage.
      */
     public static String dateTimeToFileFormat(LocalDateTime dateTime) {
+        assert dateTime != null : "Date Time should not be null";
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
         return dateTime.format(dateTimeFormatter);
     }

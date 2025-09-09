@@ -8,10 +8,11 @@ public class OutOfRangeException extends CommandException {
     /**
      * Creates a new OutOfRangeException with the specified detail message.
      *
-     * @param detail Additional details about the range violation.
+     * @param message Additional details about the range violation.
      */
-    public OutOfRangeException(String detail) {
+    public OutOfRangeException(String message) {
         super("The numbers you've provided are outside the acceptable parameters.\n"
-                + detail);
+                + message);
+        assert message != null : "Exception message cannot be null";
     }
 }

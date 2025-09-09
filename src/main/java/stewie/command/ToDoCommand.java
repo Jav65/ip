@@ -27,12 +27,15 @@ public class ToDoCommand implements Command {
      */
     @Override
     public String execute(TaskList taskList, Storage storage) throws CommandException {
+        assert taskList != null : "TaskList cannot be null";
+        assert storage != null : "Storage cannot be null";
         if (args.isBlank()) {
             throw new InvalidCommandException("todo <description>");
         }
 
         String response = taskList.addTask(new ToDoTask(args.trim()));
         storage.saveTasks(taskList);
+        assert response != null : "Final response should not be null";
         return response;
     }
 

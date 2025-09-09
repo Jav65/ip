@@ -29,6 +29,8 @@ public class EventCommand implements Command {
      */
     @Override
     public String execute(TaskList taskList, Storage storage) throws CommandException {
+        assert taskList != null : "TaskList cannot be null";
+        assert storage != null : "Storage cannot be null";
         String[] parts = args.split("\\s+/from\\s+|\\s+/to\\s+");
         if (parts.length < 3 || parts[0].isBlank() || parts[1].isBlank() || parts[2].isBlank()) {
             throw new InvalidCommandException("event <description> /from <dd/MM/yyyy> <HH:mm> "
@@ -44,6 +46,7 @@ public class EventCommand implements Command {
         String response = taskList.addTask(new EventTask(parts[0].trim(), startTime, endTime));
         storage.saveTasks(taskList);
 
+        assert response != null : "Final response should not be null";
         return response;
     }
 
