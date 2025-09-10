@@ -28,8 +28,8 @@ cp EXPECTED.TXT EXPECTED-UNIX.TXT
 dos2unix ACTUAL.TXT EXPECTED-UNIX.TXT 2> /dev/null
 
 # Remove lines 7 to 52 before diffing
-tail -n +7 ACTUAL.TXT | sed '1,46d' > ACTUAL.TXT
-tail -n +7 EXPECTED-UNIX.TXT | sed '1,46d' > EXPECTED-UNIX.TXT
+tail -n +6 ACTUAL.TXT | sed '1,46d' > ACTUAL.TXT
+tail -n +6 EXPECTED-UNIX.TXT | sed '1,46d' > EXPECTED-UNIX.TXT
 
 # Compare actual and expected output
 diff ACTUAL.TXT EXPECTED-UNIX.TXT

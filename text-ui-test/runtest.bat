@@ -20,5 +20,32 @@ REM no error here, errorlevel == 0
 REM run the program, feed commands from input.txt file and redirect the output to the ACTUAL.TXT
 java -classpath ..\bin stewie.Stewie < input.txt > ACTUAL.TXT
 
-REM compare the output to the expected output
-FC ACTUAL.TXT EXPECTED.TXT
+REM remove logo: lines 7 to 52 from both files before comparing
+setlocal enabledelayedexpansion
+set line=0
+(
+    for /f "usebackq delims=" %%A in ("ACTUAL.TXT") do (
+        set /a line+=1
+        if !line! lss 6 (
+            echo %%A
+        ) else if !line! gtr 52 (
+            echo %%A
+        )
+    )
+) > ACTUAL-FILTERED.TXT
+
+set line=0
+(
+    for /f "usebackq delims=" %%A in ("EXPECTED.TXT") do (
+        set /a line+=1
+        if !line! lss 6 (
+            echo %%A
+        ) else if !line! gtr 52 (
+            echo %%A
+        )
+    )
+) > EXPECTED-FILTERED.TXT
+
+REM compare filtered files
+FC ACTUAL-FILTERED.TXT EXPECTED-FILTERED.TXT
+endlocal

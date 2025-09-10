@@ -1,0 +1,154 @@
+	 Warning: Skipping corrupted line 3: asdadsa (Invalid format)
+	 Loaded 2 tasks from data file.
+	 Skipped 1 corrupted lines. File will be cleaned up.
+	________________________________________________________________________
+	 Ah, a new face. Hullo
+	________________________________________________________________________
+	 Don't just stand there, minion.
+	 State your purpose before I lose what's left of my patience.
+	________________________________________________________________________
+$ 	________________________________________________________________________
+	 These, my dear simpleton, are the items on your agenda.
+	  1. [E][ ] event1 (from: 20 Feb 2000 to: 21 Feb 2000 12:09)
+	  2. [D][X] deadline1 (by: 22 Dec 2200)
+	 Failure is not an option.
+	 You have 2 tasks left
+	________________________________________________________________________
+$ 	________________________________________________________________________
+	 I've scribbled down your little task:
+	  [T][ ] watch CS2103 week 3 breifing
+	 Now, do try to keep up, won't you?
+	 You have 3 tasks left
+	________________________________________________________________________
+$ 	________________________________________________________________________
+	 These, my dear simpleton, are the items on your agenda.
+	  1. [E][ ] event1 (from: 20 Feb 2000 to: 21 Feb 2000 12:09)
+	  2. [D][X] deadline1 (by: 22 Dec 2200)
+	  3. [T][ ] watch CS2103 week 3 breifing
+	 Failure is not an option.
+	 You have 3 tasks left
+	________________________________________________________________________
+$ 	________________________________________________________________________
+	 I've scribbled down your little task:
+	  [D][ ] CS2103 Quiz 3 (by: 29 Aug 2025 16:00)
+	 Now, do try to keep up, won't you?
+	 You have 4 tasks left
+	________________________________________________________________________
+$ 	________________________________________________________________________
+	 I've scribbled down your little task:
+	  [D][ ] CS2103Quiz4 (by: 08 Aug 2025 16:00)
+	 Now, do try to keep up, won't you?
+	 You have 5 tasks left
+	________________________________________________________________________
+$ 	________________________________________________________________________
+	 These, my dear simpleton, are the items on your agenda.
+	  1. [E][ ] event1 (from: 20 Feb 2000 to: 21 Feb 2000 12:09)
+	  2. [D][X] deadline1 (by: 22 Dec 2200)
+	  3. [T][ ] watch CS2103 week 3 breifing
+	  4. [D][ ] CS2103 Quiz 3 (by: 29 Aug 2025 16:00)
+	  5. [D][ ] CS2103Quiz4 (by: 08 Aug 2025 16:00)
+	 Failure is not an option.
+	 You have 5 tasks left
+	________________________________________________________________________
+$ 	________________________________________________________________________
+	 What's this? You've uttered a complete and utter nonsense phrase.
+	 I've provided the correct format for your simpleton mind.
+	 Follow it precisely: event <description> /from <dd/MM/yyyy> <HH:mm> /to <dd/MM/yyyy> <HH:mm>
+	________________________________________________________________________
+$ 	________________________________________________________________________
+	 These, my dear simpleton, are the items on your agenda.
+	  1. [E][ ] event1 (from: 20 Feb 2000 to: 21 Feb 2000 12:09)
+	  2. [D][X] deadline1 (by: 22 Dec 2200)
+	  3. [T][ ] watch CS2103 week 3 breifing
+	  4. [D][ ] CS2103 Quiz 3 (by: 29 Aug 2025 16:00)
+	  5. [D][ ] CS2103Quiz4 (by: 08 Aug 2025 16:00)
+	 Failure is not an option.
+	 You have 5 tasks left
+	________________________________________________________________________
+$ 	________________________________________________________________________
+	 Behold I've declared this paltry task complete.
+	  [D][X] deadline1 (by: 22 Dec 2200)
+	 Don't get cocky. You still have a long way to go.
+	________________________________________________________________________
+$ 	________________________________________________________________________
+	 Behold I've declared this paltry task complete.
+	  [E][X] event1 (from: 20 Feb 2000 to: 21 Feb 2000 12:09)
+	 Don't get cocky. You still have a long way to go.
+	________________________________________________________________________
+$ 	________________________________________________________________________
+	 These, my dear simpleton, are the items on your agenda.
+	  1. [E][X] event1 (from: 20 Feb 2000 to: 21 Feb 2000 12:09)
+	  2. [D][X] deadline1 (by: 22 Dec 2200)
+	  3. [T][ ] watch CS2103 week 3 breifing
+	  4. [D][ ] CS2103 Quiz 3 (by: 29 Aug 2025 16:00)
+	  5. [D][ ] CS2103Quiz4 (by: 08 Aug 2025 16:00)
+	 Failure is not an option.
+	 You have 5 tasks left
+	________________________________________________________________________
+$ 	________________________________________________________________________
+	 You're toying with me I've marked this back as incomplete.
+	  [E][ ] event1 (from: 20 Feb 2000 to: 21 Feb 2000 12:09)
+	 Don't think for a second I'll forget this betrayal.
+	________________________________________________________________________
+$ 	________________________________________________________________________
+	 Behold I've declared this paltry task complete.
+	  [T][X] watch CS2103 week 3 breifing
+	 Don't get cocky. You still have a long way to go.
+	________________________________________________________________________
+$ 	________________________________________________________________________
+	 These, my dear simpleton, are the items on your agenda.
+	  1. [E][ ] event1 (from: 20 Feb 2000 to: 21 Feb 2000 12:09)
+	  2. [D][X] deadline1 (by: 22 Dec 2200)
+	  3. [T][X] watch CS2103 week 3 breifing
+	  4. [D][ ] CS2103 Quiz 3 (by: 29 Aug 2025 16:00)
+	  5. [D][ ] CS2103Quiz4 (by: 08 Aug 2025 16:00)
+	 Failure is not an option.
+	 You have 5 tasks left
+	________________________________________________________________________
+$ 	________________________________________________________________________
+	 Poof
+	  [D][X] deadline1 (by: 22 Dec 2200)
+	 Don't get cocky. You still have a long way to go.
+	 You have 4 tasks left.
+	________________________________________________________________________
+$ 	________________________________________________________________________
+	 These, my dear simpleton, are the items on your agenda.
+	  1. [E][ ] event1 (from: 20 Feb 2000 to: 21 Feb 2000 12:09)
+	  2. [T][X] watch CS2103 week 3 breifing
+	  3. [D][ ] CS2103 Quiz 3 (by: 29 Aug 2025 16:00)
+	  4. [D][ ] CS2103Quiz4 (by: 08 Aug 2025 16:00)
+	 Failure is not an option.
+	 You have 4 tasks left
+	________________________________________________________________________
+$ 	________________________________________________________________________
+	 Hmph Here are the pathetic, insignificant plans that you requested.
+	  1. [D][ ] CS2103 Quiz 3 (by: 29 Aug 2025 16:00)
+	  2. [D][ ] CS2103Quiz4 (by: 08 Aug 2025 16:00)
+	 Found 2 tasks in total.
+	________________________________________________________________________
+$ 	________________________________________________________________________
+	 These, my dear simpleton, are the items on your agenda.
+	  1. [E][ ] event1 (from: 20 Feb 2000 to: 21 Feb 2000 12:09)
+	  2. [T][X] watch CS2103 week 3 breifing
+	  3. [D][ ] CS2103 Quiz 3 (by: 29 Aug 2025 16:00)
+	  4. [D][ ] CS2103Quiz4 (by: 08 Aug 2025 16:00)
+	 Failure is not an option.
+	 You have 4 tasks left
+	________________________________________________________________________
+$ 	________________________________________________________________________
+	 Oh, rejoice
+	   [D][ ] CS2103 Quiz 4 (by: 30 Sep 2025 16:00)
+	 Try not to screw it up this time.
+	________________________________________________________________________
+$ 	________________________________________________________________________
+	 These, my dear simpleton, are the items on your agenda.
+	  1. [E][ ] event1 (from: 20 Feb 2000 to: 21 Feb 2000 12:09)
+	  2. [T][X] watch CS2103 week 3 breifing
+	  3. [D][ ] CS2103 Quiz 3 (by: 29 Aug 2025 16:00)
+	  4. [D][ ] CS2103 Quiz 4 (by: 30 Sep 2025 16:00)
+	 Failure is not an option.
+	 You have 4 tasks left
+	________________________________________________________________________
+$ 	________________________________________________________________________
+	 Finally, you're leaving. Do try not to get lost on the way out.
+	________________________________________________________________________
