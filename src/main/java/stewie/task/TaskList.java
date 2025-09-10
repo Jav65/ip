@@ -11,7 +11,8 @@ import java.util.stream.IntStream;
  */
 public class TaskList {
     private static final int INDEX_OFFSET = 1;
-    private ArrayList<Task> tasks;
+
+    private final ArrayList<Task> tasks;
 
     /**
      * Creates a new empty task list.
@@ -97,7 +98,7 @@ public class TaskList {
 
         return "These, my dear simpleton, are the items on your agenda.\n"
                 + taskList + "\n"
-                + "Failure is not an option."
+                + "Failure is not an option.\n"
                 + "You have " + this.tasks.size() + " tasks left";
     }
 
@@ -144,6 +145,24 @@ public class TaskList {
 
         sb.append(String.format("Found %d tasks in total.", matchingTasks.size()));
         return sb.toString();
+    }
+
+    /**
+     * Updates the task at the specified 1-based index with the given new task.
+     *
+     * @param index The 1-based index of the task to mark.
+     * @param newTask The new {@link Task} to replace the existing task.
+     * @return Confirmation message about the updated task.
+     */
+    public String updateTask(int index, Task newTask) {
+        assert newTask != null : "Task cannot be null";
+        assert index > 0 : "Index must be positive (1-based indexing)";
+        assert index <= this.tasks.size() : "Index must not exceed task list size";
+        tasks.set(index, newTask);
+        assert tasks.get(index).equals(newTask) : "TaskList is not updated";
+        return "Oh, rejoice! I've altered your little task:\n"
+                + "  " + newTask.getDescription() + "\n"
+                + "Try not to screw it up this time.";
     }
 
     /**
