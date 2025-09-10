@@ -32,6 +32,24 @@ public class DeadlineCommand implements Command {
     public String execute(TaskList taskList, Storage storage) throws CommandException {
         assert taskList != null : "TaskList cannot be null";
         assert storage != null : "Storage cannot be null";
+        DeadlineTask task = parseArgsToDeadlineTask(args);
+        String response = taskList.addTask(task);
+        storage.saveTasks(taskList);
+
+        assert response != null : "Final response should not be null";
+        return response;
+    }
+
+
+    /**
+     * Parses the given arguments to create a {@link DeadlineTask}.
+     *
+     * @param args The command arguments containing the task description and deadline.
+     * @return A new {@link DeadlineTask} with the parsed description and deadline.
+     * @throws InvalidCommandException If the description or deadline is missing, blank,
+     *                                 or date parsing fails.
+     */
+    public static DeadlineTask parseArgsToDeadlineTask(String args) throws InvalidCommandException {
         String[] parts = args.split("\\s+/by\\s+", 2);
         if (parts.length < 2 || parts[0].isBlank() || parts[1].isBlank()) {
             throw new InvalidCommandException(USAGE_MESSAGE);
@@ -40,11 +58,7 @@ public class DeadlineCommand implements Command {
         if (deadline == null) {
             throw new InvalidCommandException(USAGE_MESSAGE);
         }
-        String response = taskList.addTask(new DeadlineTask(parts[0].trim(), deadline));
-        storage.saveTasks(taskList);
-
-        assert response != null : "Final response should not be null";
-        return response;
+        return new DeadlineTask(parts[0].trim(), deadline);
     }
 
     @Override

@@ -33,10 +33,10 @@ public class TaskListTest {
     @Test
     public void testAddTask() {
         String expectedMessage =
-                        "\t I've scribbled down your little task:\n"
-                        + "\t  [T][ ] Read a book\n"
-                        + "\t Now, do try to keep up, won't you?\n"
-                        + "\t You have 1 tasks left.\n";
+                        "I've scribbled down your little task:\n"
+                        + " [T][ ] Read a book\n"
+                        + "Now, do try to keep up, won't you?\n"
+                        + "You have 1 tasks left";
         String actualMessage = taskList.addTask(todoTask);
         assertEquals(expectedMessage, actualMessage);
         assertEquals(1, taskList.size());
@@ -46,9 +46,9 @@ public class TaskListTest {
     public void testMarkTask() {
         taskList.addTask(todoTask);
         String expectedMessage =
-                        "\t Behold! I've declared this paltry task complete.\n"
-                        + "\t  [T][X] Read a book\n"
-                        + "\t Don't get cocky. You still have a long way to go.\n";
+                        "Behold! I've declared this paltry task complete.\n"
+                        + " [T][X] Read a book\n"
+                        + "Don't get cocky. You still have a long way to go.";
         String actualMessage = taskList.markTask(1);
         assertEquals(expectedMessage, actualMessage);
         assertTrue(taskList.getTasks().get(0).isDone);
@@ -59,9 +59,9 @@ public class TaskListTest {
         taskList.addTask(todoTask);
         taskList.markTask(1);
         String expectedMessage =
-                        "\t You're toying with me! I've marked this back as incomplete.\n"
-                        + "\t  [T][ ] Read a book\n"
-                        + "\t Don't think for a second I'll forget this betrayal.\n";
+                        "You're toying with me! I've marked this back as incomplete.\n"
+                        + " [T][ ] Read a book\n"
+                        + "Don't think for a second I'll forget this betrayal.";
         String actualMessage = taskList.unmarkTask(1);
         assertEquals(expectedMessage, actualMessage);
         assertEquals(false, taskList.getTasks().get(0).isDone);
@@ -72,10 +72,10 @@ public class TaskListTest {
         taskList.addTask(todoTask);
         taskList.addTask(deadlineTask);
         String expectedMessage =
-                "\t Poof! Begone with you, you insignificant little undertaking!\n"
-                        + "\t  [T][ ] Read a book\n"
-                        + "\t Don't get cocky. You still have a long way to go.\n"
-                        + "\t You have 1 tasks left.\n";
+                "Poof! Begone with you, you insignificant little undertaking!\n"
+                        + " [T][ ] Read a book\n"
+                        + "Don't get cocky. You still have a long way to go.\n"
+                        + "You have 1 tasks left.";
         String actualMessage = taskList.deleteTask(1);
         assertEquals(expectedMessage, actualMessage);
         assertEquals(1, taskList.size());
@@ -91,18 +91,19 @@ public class TaskListTest {
         taskList.addTask(deadlineTask);
         taskList.addTask(eventTask);
         String expectedMessage =
-                        "\t These, my dear simpleton, are the items on your agenda.\n"
-                        + "\t  1. [T][ ] Read a book\n"
-                        + "\t  2. [D][ ] Pay bills (by: 26 Oct 2025 18:00)\n"
-                        + "\t  3. [E][ ] Team meeting (from: 01 Nov 2025 10:00 to: 01 Nov 2025 12:00)\n"
-                        + "\t Failure is not an option.\n";
+                        "These, my dear simpleton, are the items on your agenda.\n"
+                        + " 1. [T][ ] Read a book\n"
+                        + " 2. [D][ ] Pay bills (by: 26 Oct 2025 18:00)\n"
+                        + " 3. [E][ ] Team meeting (from: 01 Nov 2025 10:00 to: 01 Nov 2025 12:00)\n"
+                        + "Failure is not an option.\n"
+                        + "You have 3 tasks left";
         String actualMessage = taskList.listTask();
         assertEquals(expectedMessage, actualMessage);
     }
 
     @Test
     public void testListEmptyTask() {
-        String expectedMessage = "\t No tasks? How utterly dreadful!\n";
+        String expectedMessage = "No tasks? How utterly dreadful!\n";
         String actualMessage = taskList.listTask();
         assertEquals(expectedMessage, actualMessage);
     }

@@ -11,6 +11,7 @@ import stewie.command.ListCommand;
 import stewie.command.MarkCommand;
 import stewie.command.ToDoCommand;
 import stewie.command.UnmarkCommand;
+import stewie.command.UpdateCommand;
 import stewie.exceptions.CommandException;
 import stewie.exceptions.InvalidCommandException;
 import stewie.exceptions.UnknownCommandException;
@@ -53,6 +54,8 @@ public class Parser {
             return new DeleteCommand(args);
         case FIND:
             return new FindCommand(args);
+        case UPDATE:
+            return new UpdateCommand(args);
         case BYE:
             return new ByeCommand();
         default:

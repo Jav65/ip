@@ -33,6 +33,25 @@ public class EventCommand implements Command {
     public String execute(TaskList taskList, Storage storage) throws CommandException {
         assert taskList != null : "TaskList cannot be null";
         assert storage != null : "Storage cannot be null";
+
+        EventTask task = parseArgsToEventTask(args);
+        String response = taskList.addTask(task);
+        storage.saveTasks(taskList);
+
+        assert response != null : "Final response should not be null";
+        return response;
+    }
+
+    /**
+     * Parses the given arguments to create an {@link EventTask}.
+     *
+     * @param args The command arguments containing the event description,
+     *             start time, and end time.
+     * @return A new {@link EventTask} with the given details.
+     * @throws InvalidCommandException If the format is invalid, missing required fields,
+     *                                 or date parsing fails.
+     */
+    public static EventTask parseArgsToEventTask(String args) throws InvalidCommandException {
         String[] parts = args.split("\\s+/from\\s+|\\s+/to\\s+");
         if (parts.length < 3 || parts[0].isBlank() || parts[1].isBlank() || parts[2].isBlank()) {
             throw new InvalidCommandException(USAGE_MESSAGE);
@@ -42,12 +61,7 @@ public class EventCommand implements Command {
         if (startTime == null || endTime == null) {
             throw new InvalidCommandException(USAGE_MESSAGE);
         }
-
-        String response = taskList.addTask(new EventTask(parts[0].trim(), startTime, endTime));
-        storage.saveTasks(taskList);
-
-        assert response != null : "Final response should not be null";
-        return response;
+        return new EventTask(parts[0].trim(), startTime, endTime);
     }
 
     @Override
