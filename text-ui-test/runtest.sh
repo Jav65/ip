@@ -32,7 +32,7 @@ tail -n +7 ACTUAL.TXT | sed '1,46d' > ACTUAL.TXT
 tail -n +7 EXPECTED-UNIX.TXT | sed '1,46d' > EXPECTED.TXT
 
 # Compare actual and expected output
-diff ACTUAL.TXT EXPECTED-UNIX.TXT
+diff ACTUAL.TXT EXPECTED.TXT
 if [ $? -eq 0 ]; then
     echo "Test result: PASSED"
     exit 0
