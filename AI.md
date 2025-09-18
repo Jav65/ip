@@ -12,6 +12,7 @@ I used AI (mostly ChatGPT and Claude) to validate whether my code structure was 
 6. I also use AI to correct grammar in this documentation.
 7. I use AI to help design GUI layouts and component interactions, especially for early-stage prototyping and usability ideas.
 8. I use AI to help write JUnit test code—especially for generating test scaffolding, edge case coverage, and verifying expected behavior.
+9. I use AI to help fix wording and grammar in the User Guide, making it clearer and more professional.
 
 ## 🔍 Observations
 

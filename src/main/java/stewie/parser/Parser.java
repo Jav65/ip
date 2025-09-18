@@ -60,7 +60,7 @@ public class Parser {
             return new ByeCommand();
         default:
             throw new UnknownCommandException("\tlist, mark <i>, unmark <i>, todo <desc>, deadline <desc> /by <time>,"
-                    + "\n\tevent <desc> /from <start> /to <end>, delete <i>, find <desc>, bye");
+                 + "\n\tevent <desc> /from <start> /to <end>, delete <i>, find <desc>, update <i> <task> <desc>, bye");
         }
     }
 }
