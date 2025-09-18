@@ -32,7 +32,7 @@ class UpdateCommandTest {
 
     @Test
     void execute_validTodoArgs_updatesTask() throws CommandException {
-        when(taskList.updateTask(Mockito.eq(0), Mockito.any(Task.class))).thenReturn("Task updated");
+        when(taskList.updateTask(Mockito.eq(1), Mockito.any(Task.class))).thenReturn("Task updated");
 
         UpdateCommand command = new UpdateCommand("1 todo Buy milk");
         String result = command.execute(taskList, storage);
@@ -40,7 +40,7 @@ class UpdateCommandTest {
         assertEquals("Task updated", result);
 
         ArgumentCaptor<Task> captor = ArgumentCaptor.forClass(Task.class);
-        verify(taskList).updateTask(Mockito.eq(0), captor.capture());
+        verify(taskList).updateTask(Mockito.eq(1), captor.capture());
         Task updatedTask = captor.getValue();
         assertEquals("[T][ ] Buy milk", updatedTask.getDescription());
 
@@ -49,7 +49,7 @@ class UpdateCommandTest {
 
     @Test
     void execute_validDeadlineArgs_updatesTask() throws CommandException {
-        when(taskList.updateTask(Mockito.eq(1), Mockito.any(Task.class))).thenReturn("Deadline updated");
+        when(taskList.updateTask(Mockito.eq(2), Mockito.any(Task.class))).thenReturn("Deadline updated");
 
         String args = "2 deadline Submit report /by 20/09/2025 18:00";
         UpdateCommand command = new UpdateCommand(args);
@@ -58,7 +58,7 @@ class UpdateCommandTest {
         assertEquals("Deadline updated", result);
 
         ArgumentCaptor<Task> captor = ArgumentCaptor.forClass(Task.class);
-        verify(taskList).updateTask(Mockito.eq(1), captor.capture());
+        verify(taskList).updateTask(Mockito.eq(2), captor.capture());
         Task updatedTask = captor.getValue();
 
         assertEquals(
@@ -70,7 +70,7 @@ class UpdateCommandTest {
 
     @Test
     void execute_validEventArgs_updatesTask() throws CommandException {
-        when(taskList.updateTask(Mockito.eq(4), Mockito.any(Task.class))).thenReturn("Event updated");
+        when(taskList.updateTask(Mockito.eq(5), Mockito.any(Task.class))).thenReturn("Event updated");
 
         String args = "5 event Project meeting /from 01/11/2025 10:00 /to 01/11/2025 12:00";
         UpdateCommand command = new UpdateCommand(args);
@@ -79,7 +79,7 @@ class UpdateCommandTest {
         assertEquals("Event updated", result);
 
         ArgumentCaptor<Task> captor = ArgumentCaptor.forClass(Task.class);
-        verify(taskList).updateTask(Mockito.eq(4), captor.capture());
+        verify(taskList).updateTask(Mockito.eq(5), captor.capture());
         Task updatedTask = captor.getValue();
 
         assertEquals(
