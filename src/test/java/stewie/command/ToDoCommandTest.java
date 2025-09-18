@@ -1,19 +1,21 @@
 package stewie.command;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.mockito.ArgumentCaptor;
-import org.mockito.Mockito;
-import stewie.exceptions.CommandException;
-import stewie.exceptions.InvalidCommandException;
-import stewie.storage.Storage;
-import stewie.task.ToDoTask;
-import stewie.task.TaskList;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentCaptor;
+import org.mockito.Mockito;
+
+import stewie.exceptions.CommandException;
+import stewie.exceptions.InvalidCommandException;
+import stewie.storage.Storage;
+import stewie.task.TaskList;
+import stewie.task.ToDoTask;
+
 
 /**
  * Tests for {@link ToDoCommand}.
@@ -47,7 +49,7 @@ class ToDoCommandTest {
 
     @Test
     void parseArgsToToDoTask_blankArgs_throwsInvalidCommandException() {
-        assertThrows(InvalidCommandException.class,
-                () -> ToDoCommand.parseArgsToToDoTask("   "));
+        assertThrows(InvalidCommandException.class, () ->
+                ToDoCommand.parseArgsToToDoTask("   "));
     }
 }

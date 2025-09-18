@@ -1,13 +1,14 @@
 package stewie.command;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.jupiter.api.Test;
+
 import stewie.exceptions.CommandException;
 import stewie.storage.Storage;
 import stewie.task.TaskList;
 import stewie.ui.Ui;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * Contains tests for {@link ByeCommand}.

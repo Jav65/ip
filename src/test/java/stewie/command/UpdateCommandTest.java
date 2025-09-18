@@ -1,24 +1,20 @@
 package stewie.command;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.mockito.ArgumentCaptor;
-import org.mockito.Mockito;
-import stewie.exceptions.CommandException;
-import stewie.exceptions.InvalidCommandException;
-import stewie.storage.Storage;
-import stewie.task.DeadlineTask;
-import stewie.task.EventTask;
-import stewie.task.Task;
-import stewie.task.TaskList;
-import stewie.task.ToDoTask;
-
-import java.time.LocalDateTime;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentCaptor;
+import org.mockito.Mockito;
+
+import stewie.exceptions.CommandException;
+import stewie.exceptions.InvalidCommandException;
+import stewie.storage.Storage;
+import stewie.task.Task;
+import stewie.task.TaskList;
 
 /**
  * Tests for {@link UpdateCommand}.

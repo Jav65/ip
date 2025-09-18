@@ -1,15 +1,16 @@
 package stewie.command;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
-import stewie.exceptions.CommandException;
-import stewie.storage.Storage;
-import stewie.task.TaskList;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
+
+import stewie.exceptions.CommandException;
+import stewie.storage.Storage;
+import stewie.task.TaskList;
 
 /**
  * Tests for {@link ListCommand}.

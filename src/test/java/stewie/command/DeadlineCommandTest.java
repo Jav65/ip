@@ -1,21 +1,25 @@
 package stewie.command;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
+import java.time.LocalDateTime;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mockito;
+
 import stewie.exceptions.CommandException;
 import stewie.exceptions.InvalidCommandException;
 import stewie.storage.Storage;
 import stewie.task.DeadlineTask;
 import stewie.task.TaskList;
 
-import java.time.LocalDateTime;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+
 
 /**
  * Tests for {@link DeadlineCommand}.
@@ -52,13 +56,13 @@ class DeadlineCommandTest {
 
     @Test
     void parseArgsToDeadlineTask_missingParts_throwsInvalidCommandException() {
-        assertThrows(InvalidCommandException.class,
-                () -> DeadlineCommand.parseArgsToDeadlineTask("Submit report"));
+        assertThrows(InvalidCommandException.class, () ->
+                DeadlineCommand.parseArgsToDeadlineTask("Submit report"));
     }
 
     @Test
     void parseArgsToDeadlineTask_invalidDate_throwsInvalidCommandException() {
-        assertThrows(InvalidCommandException.class,
-                () -> DeadlineCommand.parseArgsToDeadlineTask("Submit report /by 32/13/2025 99:00"));
+        assertThrows(InvalidCommandException.class, () ->
+                DeadlineCommand.parseArgsToDeadlineTask("Submit report /by 32/13/2025 99:00"));
     }
 }

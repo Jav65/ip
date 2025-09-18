@@ -1,12 +1,26 @@
 package stewie.parser;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.jupiter.api.Test;
-import stewie.command.*;
+
+import stewie.command.ByeCommand;
+import stewie.command.Command;
+import stewie.command.DeadlineCommand;
+import stewie.command.DeleteCommand;
+import stewie.command.EventCommand;
+import stewie.command.FindCommand;
+import stewie.command.ListCommand;
+import stewie.command.MarkCommand;
+import stewie.command.ToDoCommand;
+import stewie.command.UnmarkCommand;
+import stewie.command.UpdateCommand;
 import stewie.exceptions.CommandException;
 import stewie.exceptions.InvalidCommandException;
 import stewie.exceptions.UnknownCommandException;
 
-import static org.junit.jupiter.api.Assertions.*;
+
 
 /**
  * Tests for {@link Parser}.

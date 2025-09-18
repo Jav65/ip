@@ -1,19 +1,22 @@
 package stewie.storage;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.io.TempDir;
-import stewie.task.DeadlineTask;
-import stewie.task.EventTask;
-import stewie.task.TaskList;
-import stewie.task.ToDoTask;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDateTime;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
+
+import stewie.task.DeadlineTask;
+import stewie.task.EventTask;
+import stewie.task.TaskList;
+import stewie.task.ToDoTask;
+
 
 /**
  * Tests for {@link Storage}.
@@ -33,7 +36,7 @@ class StorageTest {
     }
 
     @Test
-    void saveTasks_andLoadTasks_roundTrip_successful() {
+    void saveTasks_andLoadTasks() {
         TaskList taskList = new TaskList();
         taskList.addTask(new ToDoTask("Buy milk"));
         taskList.addTask(new DeadlineTask("Submit report",
@@ -61,9 +64,9 @@ class StorageTest {
     @Test
     void loadTaskList_withCorruptedLine_skipsAndCleansFile() throws IOException {
         Files.write(testFile, (
-                "T | 0 | Buy milk\n" +
-                        "X | ? | invalid line\n" + // corrupted
-                        "D | 1 | Submit report | 20/09/2025 18:00\n"
+                "T | 0 | Buy milk\n"
+                    + "X | ? | invalid line\n" // corrupted
+                    + "D | 1 | Submit report | 20/09/2025 18:00\n"
         ).getBytes());
 
         TaskList result = storage.loadTaskList();

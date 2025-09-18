@@ -1,12 +1,15 @@
 package stewie.util;
 
-import org.junit.jupiter.api.Test;
-import stewie.command.CommandType;
-import stewie.exceptions.InvalidCommandException;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.time.LocalDateTime;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+
+import stewie.command.CommandType;
+import stewie.exceptions.InvalidCommandException;
 
 /**
  * Tests for {@link Helper}.
@@ -21,14 +24,14 @@ class HelperTest {
 
     @Test
     void parseIndexOrThrow_blank_throwsInvalidCommandException() {
-        assertThrows(InvalidCommandException.class,
-                () -> Helper.parseIndexOrThrow("   ", "usage"));
+        assertThrows(InvalidCommandException.class, () ->
+                Helper.parseIndexOrThrow("   ", "usage"));
     }
 
     @Test
     void parseIndexOrThrow_nonInteger_throwsInvalidCommandException() {
-        assertThrows(InvalidCommandException.class,
-                () -> Helper.parseIndexOrThrow("abc", "usage"));
+        assertThrows(InvalidCommandException.class, () ->
+                Helper.parseIndexOrThrow("abc", "usage"));
     }
 
     @Test
