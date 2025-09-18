@@ -158,8 +158,8 @@ public class TaskList {
         assert newTask != null : "Task cannot be null";
         assert index > 0 : "Index must be positive (1-based indexing)";
         assert index <= this.tasks.size() : "Index must not exceed task list size";
-        tasks.set(index, newTask);
-        assert tasks.get(index).equals(newTask) : "TaskList is not updated";
+        tasks.set(index - INDEX_OFFSET, newTask);
+        assert tasks.get(index - INDEX_OFFSET).equals(newTask) : "TaskList is not updated";
         return "Oh, rejoice! I've altered your little task:\n"
                 + "  " + newTask.getDescription() + "\n"
                 + "Try not to screw it up this time.";

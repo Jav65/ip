@@ -2,6 +2,7 @@ package stewie.command;
 
 import stewie.exceptions.CommandException;
 import stewie.exceptions.InvalidCommandException;
+import stewie.exceptions.OutOfRangeException;
 import stewie.storage.Storage;
 import stewie.task.Task;
 import stewie.task.TaskList;
@@ -51,7 +52,12 @@ public class UpdateCommand implements Command {
             throw new InvalidCommandException(USAGE_MESSAGE);
         }
 
-        String response = taskList.updateTask(index - 1, newTask);
+        String response;
+        try {
+            response = taskList.updateTask(index, newTask);
+        } catch (IndexOutOfBoundsException e) {
+            throw new OutOfRangeException("There's no task at index " + index);
+        }
         storage.saveTasks(taskList);
 
         assert response != null : "Final response should not be null";
